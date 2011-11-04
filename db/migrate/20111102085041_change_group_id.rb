@@ -1,6 +1,6 @@
 class ChangeGroupId < ActiveRecord::Migration
   def up
-    change_column :partners, :group_id, :integer
+    #change_column :partners, :group_id, :integer
   end
 
   def down
