@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Balsamiq Mockups
+Comment=<>
+GenericName=Balsamiq Mockups
+Exec='/opt'/'Balsamiq Mockups'/bin/'Balsamiq Mockups'
+Type=Application
+Terminal=false
+Icon=balsamiqmockupsfordesktop.ede15cf69e11f7f7d45b5430c7d37cc6c3545e3c.1
+StartupNotify=true
+X-KDE-StartupNotify=true
+Categories=Utility;
+X-AppInstall-Package=balsamiqmockupsfordesktop.ede15cf69e11f7f7d45b5430c7d37cc6c3545e3c.1
+X-AppInstall-Section=main
+

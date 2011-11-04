@@ -1,0 +1,33 @@
+<div class="message">
+  <h1>Sending Email</h1>
+  <hr class="line" />
+  <%= form_tag inbox_path do%>
+    <center>
+      <table class="table_message">
+        <tr>
+          <th>Recipients</th>
+          <td>:</td>
+          <td>Recipient</td>
+        </tr>
+        <tr>
+          <th>Attachments</th>
+          <td>:</td>
+          <td>Attachment</td>
+        </tr>
+        <tr>
+          <th>Subject</th>
+          <td>:</td>
+          <td><%= text_field_tag "" %></td>
+        </tr>
+        <tr>
+          <th>Text</th>
+          <td>:</td>
+          <td><%= text_area_tag "" %></td>
+        </tr>
+      </table>
+    </center>
+    <%= submit_tag "Submit" %>
+  <% end %>
+  <hr class="line" />
+  <p>Company Name</p>
+</div>

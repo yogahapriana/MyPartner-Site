@@ -1,0 +1,46 @@
+<div class="message">
+  <h1>  <%= @group.name %> </h1>
+  <hr class="line" />
+
+  <% count = 0  %>
+
+  <div class="message">
+    <%= form_for @message, :url => create_message_path, :html => { :multipart => true } do |f| %>
+      <center>
+        <table class="table_message">
+          <tr>
+            <th>Recipients</th>
+            <td>:</td>
+            <td>
+              <% @partners.each do |partner| %>
+                <% count += 1 %>
+                <% name = partner.first_name.to_s + " " + partner.last_name.to_s + " ( " + partner.email + " )" %>
+
+                <%= check_box_tag "partners[]", "#{partner.email}" %> <%= name %>
+                <br/>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>Attachments</th>
+            <td>:</td>
+            <td> <%= file_field_tag "message[attachments_attributes][1][attached_file]" %>  </td>
+          </tr>
+          <tr>
+            <th>Subject</th>
+            <td>:</td>
+            <td><%= f.text_field "subject" %></td>
+          </tr>
+          <tr>
+            <th>Text</th>
+            <td>:</td>
+            <td><%= f.text_area "text" %></td>
+          </tr>
+        </table>
+      </center>
+      <%= submit_tag "Submit" %>
+    <% end %>
+    <hr class="line" />
+    <p>Company Name</p>
+  </div>
+</div>

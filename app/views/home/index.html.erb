@@ -1,0 +1,24 @@
+<div class="home">
+  <h1>Site Name</h1>
+  <hr class="line" />
+<%= form_tag root_path do %>
+  <%= text_field_tag :keyword %> :
+  <%= submit_tag "Search" %>
+<% end %>
+
+  <hr class="line" />
+  <% if @groups.count==0 %>
+    <%= "Results not found" %>
+  <% else %>
+    <%= "Results of group with keyword \"#{@keyword}\" : " %><br />
+    <% count=0 %>
+    <% @groups.each do |g| %>
+      <% count = count + 1 %>
+      <% @group_name = g.name %>
+      <%= count.to_s + ". " %>
+      <%= link_to "#{@group_name}", "/choose_recipients/#{g.id}" %><br />
+    <% end %>
+  <% end %>
+  <hr class="line" />
+  <p>Company Name</p>
+</div>
