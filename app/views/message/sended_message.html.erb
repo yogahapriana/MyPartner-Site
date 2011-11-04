@@ -1,0 +1,27 @@
+<div class="message">
+  <h1><%= current_user.email %> - ( Sended) </h1>
+  <hr class="line" />
+  <center>
+  <table border="1">
+    <tr>
+      <th>No</th>
+      <th>Subject</th>
+      <th>Text</th>
+      <th>Recipients</th>
+      <th>Replies</th>
+    </tr>
+    <% count = 0 %>
+    <% @message.each do |message| %>
+    <tr>
+      <td><%= count += 1 %></td>
+      <td><%= message.subject %> </td>
+      <td><%= message.text %> </td>
+      <td>Recipients</td>
+      <td>Replies</td>
+    </tr>
+    <% end %>
+  </table>
+  </center>
+  <hr class="line" />
+  <p>Company Name</p>
+</div>

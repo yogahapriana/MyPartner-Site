@@ -24,7 +24,7 @@ MyPartnerSite3::Application.routes.draw do
   get "choose_recipients/:id", :to => "message#choose_recipients"
 #  get "choose_recipients/:group_id", :to => "messages#choose_recipients"
   post "send_email/", :to => "message#send_email"
-  get "sended_message/:id", :to => "message#sended_message"
+  get "sended_message/", :to => "message#sended_message"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

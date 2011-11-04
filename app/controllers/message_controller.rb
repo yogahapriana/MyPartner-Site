@@ -21,7 +21,7 @@ class MessageController < ApplicationController
       @partners.each do |partner|
         Recipient.create(:email_recipient => partner, :user_id => current_user.id, :message_id => @message.id)
       end
-      redirect_to "/sended_message"
+      redirect_to sended_message_path
     else
       @group = Group.find(params[:id])
       @partners = @group.partners
@@ -31,6 +31,7 @@ class MessageController < ApplicationController
   end
 
   def sended_message
-    
+    @user_id = current_user.id
+    @message = Message.where(:user_id => @user_id)
   end
 end
