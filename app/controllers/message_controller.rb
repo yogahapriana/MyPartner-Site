@@ -1,4 +1,6 @@
 class MessageController < ApplicationController
+  before_filter :get_user_id, :only => [:sended_message, :reply]
+
   def index
   end
 
@@ -15,12 +17,7 @@ class MessageController < ApplicationController
 
   def create_message
     @message = Message.new(params[:message])
-
     if @message.save
-      @partners = params["partners"]
-      @partners.each do |partner|
-        Recipient.create(:email_recipient => partner, :user_id => current_user.id, :message_id => @message.id)
-      end
       redirect_to sended_message_path
     else
       @group = Group.find(params[:id])
@@ -31,7 +28,21 @@ class MessageController < ApplicationController
   end
 
   def sended_message
-    @user_id = current_user.id
     @message = Message.where(:user_id => @user_id)
+  end
+
+  def reply
+    @message_id = params["message_id"]
+    @message = @current_user.messages.find(@message_id)
+    @recipients = @message.recipients
+    @attachment = @message.attachments
+  end
+
+  private
+  
+  def get_user_id
+    unless current_user.id.nil?
+      @user_id = current_user.id
+    end
   end
 end

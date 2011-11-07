@@ -7,12 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <center>
 <div id="user_nav">
   <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not you?
+  Signed in as <b><%= current_user.username %></b>. Not you?
     <%= link_to "Sign out", destroy_user_session_path %> |
     <%= link_to "Create Partner", partners_path %> |
     <%= link_to "Create Group", groups_path %> |
+    <%= link_to "Sended Message", sended_message_path %> |
     <%= link_to "Home", root_path %>
   <% else %>
     <%= link_to "Sign in", new_user_session_path %> or
@@ -21,6 +23,6 @@
 </div>
   
 <%= yield %>
-
+  </center>
 </body>
 </html>

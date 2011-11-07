@@ -1,0 +1,16 @@
+<b>All Users</b>
+<br>
+<table border="1">
+  <tr>
+    <td>Username</td>
+    <td>Edit?</td>
+    <td>Delete?</td>
+    <%-@users.each do |user|%>
+    <tr>
+      <td><%=  user.username%></td>
+      <td><%= link_to 'edit',edit_user_path(user.id) %></td>
+      <td><%= link_to 'delete',delete_user_path(user.id),confirm: 'Are you sure?',method: :delete %></td>
+    <%end%>
+    </td>
+  </tr>
+</table>

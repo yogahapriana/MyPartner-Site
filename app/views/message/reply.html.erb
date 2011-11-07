@@ -1,0 +1,78 @@
+<div class="message">
+  <h1>Replying Message</h1>
+  <hr class="line">
+  <center>
+    <table>
+      <tr>
+        <th>Recipients</th>
+        <th>:</th>
+        <td>
+          <% count = 0 %>
+          <% begin %>
+            <%  @recipients.each do |recipient| %>
+              <% count += 1 %>
+              <%= count.to_s + ". " %>
+              <%= recipient.user.email %><br />
+            <% end %>
+          <%rescue%>
+          <%end %>
+        </td>
+      </tr>
+      <tr>
+        <th>Attachment</th>
+        <th>:</th>
+        <td>
+          <% @attachment.each do |attachment| %>
+            <%= attachment.attached_file_file_name %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>Subject</th>
+        <th>:</th>
+        <td>
+          <%= @message.subject %>
+        </td>
+      </tr>
+      <tr>
+        <th>Text</th>
+        <th>:</th>
+        <td>
+          <%= @message.text %>
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <th></th>
+        <th><p align ="right"><%=link_to 'Reply','#',onclick: "$('#reply').show();"%></p></th>
+      </tr>
+    </table>
+    <%-counter = 0%>
+    <%@message.replies.each do |reply|%>
+    <%counter +=1%>
+      <table>
+        <caption><%=counter%>st Reply</caption>
+        <tr>
+          <td>Date/Time</td>
+          <td><%=reply.created_at.to_date%></td>
+        </tr>
+        <tr>
+          <td>Reply From</td>
+             <td><%=reply.user.username%></td>
+        </tr>
+        <tr>
+          <td>Text</td>
+           <td><%=reply.content%></td>
+        </tr>
+      </table>
+    <%end%>
+  </center>
+  <hr class="line">
+  Company Name
+  <div id="reply" style="display: none;">
+    <%=form_tag reply_message_reply_path(@message.id) do%>
+      <%=text_area_tag 'content'%>
+      <%=submit_tag 'Submit'%>
+    <%end%>
+  </div>
+</div>

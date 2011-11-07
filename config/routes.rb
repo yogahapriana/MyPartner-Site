@@ -6,6 +6,19 @@ MyPartnerSite3::Application.routes.draw do
 
   resources :partners
 
+
+  resources :replies do
+    member do
+      post "reply_message"
+    end
+  end
+
+
+  match 'admin' => 'admins#index', :as => :admin
+  match 'edit_user/:id' => 'admins#edit_user', :as => :edit_user
+  match 'update_user/:id' => 'admins#update_user', :as => :update_user,:via => :put
+  match 'delete_user/:id' => 'admins#delete_user', :as => :delete_user,:via => :delete
+ 
   get "home/index"
   #  get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   #  devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
@@ -20,12 +33,12 @@ MyPartnerSite3::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
   post "create_message/", :to => "message#create_message"
-#  post "create_message/", :to => "message#send_email"
+  #  post "create_message/", :to => "message#send_email"
   get "choose_recipients/:id", :to => "message#choose_recipients"
-#  get "choose_recipients/:group_id", :to => "messages#choose_recipients"
+  #  get "choose_recipients/:group_id", :to => "messages#choose_recipients"
   post "send_email/", :to => "message#send_email"
   get "sended_message/", :to => "message#sended_message"
-  
+  get "reply/:message_id", :to => "message#reply"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
