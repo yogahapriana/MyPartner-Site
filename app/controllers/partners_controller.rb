@@ -18,7 +18,6 @@ class PartnersController < ApplicationController
 
   def create
     @partner = Partner.new(params[:partner])
-    @partner = User.new(params[:partner])
 
     if @partner.save
       redirect_to @partner, notice: 'Partner was successfully created.' 
