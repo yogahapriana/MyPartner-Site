@@ -1,5 +1,5 @@
 MyPartnerSite3::Application.routes.draw do
-  get "message/index"
+  get "inbox" => "message#index", :as => :inbox
   get "choose_recipients/index"
 
   resources :groups
@@ -20,6 +20,11 @@ MyPartnerSite3::Application.routes.draw do
   match 'delete_user/:id' => 'admins#delete_user', :as => :delete_user,:via => :delete
  
   get "home/index"
+  get "group_list" => "home#group_list", :as => :group_list
+  get "my_groups" => "home#my_groups", :as => :my_groups
+
+  post "groups/:id/join" => "groups#join", :as => :join_group
+
   #  get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   #  devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
   #  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -39,6 +44,8 @@ MyPartnerSite3::Application.routes.draw do
   post "send_email/", :to => "message#send_email"
   get "sended_message/", :to => "message#sended_message"
   get "reply/:message_id", :to => "message#reply"
+  post "attachments/:id/download", :to => "message#download_attachment", :as => :download_attachment
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

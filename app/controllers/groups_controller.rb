@@ -41,4 +41,11 @@ class GroupsController < ApplicationController
 
     redirect_to groups_url
   end
+
+  def join
+    group = Group.find(params[:id])
+    current_user.groups << group
+
+    redirect_to "/"
+  end
 end

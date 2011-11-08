@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :recipients
   has_many :replies
+
+  has_and_belongs_to_many :groups
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
@@ -20,4 +22,5 @@ class User < ActiveRecord::Base
       User.create(:username => data["name"], :email => data["email"], :password => Devise.friendly_token[0,20])
     end
   end
+
 end

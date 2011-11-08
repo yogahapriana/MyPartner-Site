@@ -23,7 +23,7 @@
         <th>:</th>
         <td>
           <% @attachment.each do |attachment| %>
-            <%= attachment.attached_file_file_name %>
+            <%= link_to attachment.attached_file_file_name, download_attachment_path(attachment), :method => :post %>
           <% end %>
         </td>
       </tr>
@@ -68,7 +68,6 @@
     <%end%>
   </center>
   <hr class="line">
-  Company Name
   <div id="reply" style="display: none;">
     <%=form_tag reply_message_reply_path(@message.id) do%>
       <%=text_area_tag 'content'%>

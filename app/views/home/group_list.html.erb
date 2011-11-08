@@ -1,0 +1,6 @@
+<h2>Choose group</h2>
+
+<%- @groups.each do |group| %>
+<%= group.name %>
+<%= link_to "join", join_group_path(group), :method => :post %>
+<%- end %>

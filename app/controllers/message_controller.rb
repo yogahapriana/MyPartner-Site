@@ -2,11 +2,12 @@ class MessageController < ApplicationController
   before_filter :get_user_id, :only => [:sended_message, :reply]
 
   def index
+    @messages = Message.my_inbox(current_user.id)
   end
 
   def choose_recipients
     @group = Group.find(params[:id])
-    @partners = @group.partners
+    @partners = @group.users.uniq
     @message = Message.new
   end
 
@@ -18,6 +19,7 @@ class MessageController < ApplicationController
   def create_message
     @message = Message.new(params[:message])
     if @message.save
+      @message.send_mail_message(current_user)
       redirect_to sended_message_path
     else
       @group = Group.find(params[:id])
@@ -33,9 +35,16 @@ class MessageController < ApplicationController
 
   def reply
     @message_id = params["message_id"]
-    @message = @current_user.messages.find(@message_id)
+    @message = Message.find(@message_id)
+    @message.readed_by(current_user.id)
     @recipients = @message.recipients
     @attachment = @message.attachments
+  end
+
+  def download_attachment
+    @attachment = Attachment.find(params[:id])
+
+    send_file @attachment.attached_file.path
   end
 
   private

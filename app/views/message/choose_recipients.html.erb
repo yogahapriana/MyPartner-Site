@@ -13,11 +13,13 @@
             <td>:</td>
             <td>
               <% @partners.each_with_index do |partner, index| %>
+              <%- unless partner.email.eql?(current_user.email) %>
                 <% count += 1 %>
-                <% name = partner.first_name.to_s + " " + partner.last_name.to_s + " ( " + partner.email + " )" %>
+                <% name = partner.username.to_s + " ( " + partner.email + " )" %>
 
-                <%= check_box_tag "message[recipients_attributes][#{index}][user_id]" %> <%= name %>
+                <%= check_box_tag "message[recipients_attributes][#{index}][user_id]", partner.id %> <%= name %>
                 <br/>
+                <%- end %>
               <% end %>
             </td>
           </tr>
