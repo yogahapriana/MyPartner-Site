@@ -12,12 +12,18 @@
   <% else %>
     <%= "Results of group with keyword \"#{@keyword}\" : " %><br />
     <% count=0 %>
+    <center />
+    <table>
     <% @groups.each do |g| %>
-      <% count = count + 1 %>
-      <% @group_name = g.name %>
-      <%= count.to_s + ". " %>
-      <%= link_to "#{@group_name}", "/choose_recipients/#{g.id}" %><br />
+      <tr>
+        <% count = count + 1 %>
+        <% @group_name = g.name %>
+        <td><%= count.to_s %></td>
+        <td>.</td>
+        <td style="text-align: left;"><%= link_to "#{@group_name}", "/choose_recipients/#{g.id}" %></td>
+      </tr>
     <% end %>
+    </table>
   <% end %>
   <hr class="line" />
   <p>Company Name</p>

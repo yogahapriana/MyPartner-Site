@@ -16,7 +16,22 @@
       <td style="<%= message.readed?(current_user.id) ? "" : "font-weight:bold;" %>"><%= link_to "#{message.subject}", "/reply/#{message.id}" %> </td>
       <td><%= User.find(message.user_id).username %></td>
       <td><%= Reply.where(:message_id => message.id).count %></td>
-      <td><%= message.created_at.strftime("%a, %d %b %Y") %></td>
+      <td>
+                  <%
+              days = message.created_at.strftime("%d")
+              if (11..13).include?(days.to_i.abs % 100)
+                "#{days}th"
+              else
+                case days.to_i.abs % 10
+                  when 1; date = message.created_at.strftime("%a, #{days}st %b %Y")
+                  when 2; date = message.created_at.strftime("%a, #{days}nd %b %Y")
+                  when 3; date = message.created_at.strftime("%a, #{days}rd %b %Y")
+                  else    date = message.created_at.strftime("%a, #{days}th %b %Y")
+                end
+              end
+          %>
+          <%= date %>
+      </td>
       <td><%= message.created_at.strftime("%I:%M %p") %></td>
     </tr>
   <% end %>
