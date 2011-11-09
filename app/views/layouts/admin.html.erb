@@ -10,10 +10,14 @@
     <center>
       <div id="user_nav">
         <% if user_signed_in? %>
-          Signed in as <b><%= current_user.username %> (Admin)</b>. Not you?
-          <%= link_to "Sign out", destroy_user_session_path %> <br />
-          <%= link_to "Create User", admin_url %> |
-          <%= link_to "Create Group", groups_path %>
+          <% if current_user.is_admin %>
+            Signed in as <b><%= current_user.username %> (Admin)</b>. Not you?
+            <%= link_to "Sign out", destroy_user_session_path %> <br />
+            <%= link_to "Create User", admin_url %> |
+            <%= link_to "Create Group", groups_path %>
+          <% else %>
+            You're not an admin, fellas! <%= link_to "Back to Home", root_path %>
+          <% end %>
         <% else %>
           <%= link_to "Sign in", new_user_session_path %> or
           <%= link_to "Sign up", new_user_registration_path %>

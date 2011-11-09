@@ -1,5 +1,7 @@
-Edit User
-<%=form_tag update_user_path(@user.id),method: :put do%>
-  <%= text_field_tag 'user[username]',@user.username %>
-  <%= submit_tag 'Submit' %>
-<%end%>
+<% if current_user.is_admin %>
+  Edit User
+  <%=  form_tag update_user_path(@user.id),method: :put do %>
+    <%= text_field_tag 'user[username]',@user.username %>
+    <%= submit_tag 'Submit' %>
+  <%  end %>
+<% end %>

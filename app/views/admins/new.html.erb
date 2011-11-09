@@ -1,26 +1,28 @@
-<%= form_for :user, :url => create_user_path,  do |f| %>
-  <h1>Creating User</h1>
-  <hr width="35%" />
-  <table>
-    <tr>
-      <td><%= f.label :username %></td>
-      <td>:</td>
-      <td><%= f.text_field :username, :size => 15 %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :email %></td>
-      <td>:</td>
-      <td><%= f.text_field :email, :size => 15 %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :password %></td>
-      <td>:</td>
-      <td><%= f.password_field :password, :size => 15 %></td>
-    </tr>
-    <tr>
-      <td colspan="3"><%= f.submit "Create" %></td>
-    </tr>
-  </table>
-  <hr width="35%" />
-  Company Name
+<% if current_user.is_admin %>
+  <%= form_for :user, :url => create_user_path,  do |f| %>
+    <h1>Creating User</h1>
+    <hr width="35%" />
+    <table>
+      <tr>
+        <td><%= f.label :username %></td>
+        <td>:</td>
+        <td><%= f.text_field :username, :size => 15 %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :email %></td>
+        <td>:</td>
+        <td><%= f.text_field :email, :size => 15 %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :password %></td>
+        <td>:</td>
+        <td><%= f.password_field :password, :size => 15 %></td>
+      </tr>
+      <tr>
+        <td colspan="3"><%= f.submit "Create" %></td>
+      </tr>
+    </table>
+    <hr width="35%" />
+    Company Name
+  <% end %>
 <% end %>
