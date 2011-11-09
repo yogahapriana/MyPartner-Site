@@ -3,11 +3,13 @@
 <hr width="35%" />
 <table>
   <tr>
+    <th>No</th>
     <th colspan="4">Name</th>
   </tr>
-
+<% count = 0 %>
 <% @groups.each do |group| %>
   <tr>
+    <td><%= count =+ 1 %></td>
     <td><%= group.name %></td>
     <td><%= link_to 'Show', group %></td>
     <td><%= link_to 'Edit', edit_group_path(group) %></td>
