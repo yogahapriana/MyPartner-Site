@@ -18,7 +18,9 @@ MyPartnerSite3::Application.routes.draw do
   match 'edit_user/:id' => 'admins#edit_user', :as => :edit_user
   match 'update_user/:id' => 'admins#update_user', :as => :update_user,:via => :put
   match 'delete_user/:id' => 'admins#delete_user', :as => :delete_user,:via => :delete
- 
+  match 'new', :to => "admins#new"
+  match "create_user", :to => "admins#create_user"
+
   get "home/index"
   get "group_list" => "home#group_list", :as => :group_list
   get "my_groups" => "home#my_groups", :as => :my_groups

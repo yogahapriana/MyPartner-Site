@@ -1,6 +1,12 @@
 <h2>Choose group</h2>
-
+<table>
+  <tr>
+    <th colspan="2">Group Name</th>
+  </tr>
 <%- @groups.each do |group| %>
-<%= group.name %>
-<%= link_to "join", join_group_path(group), :method => :post %>
+  <tr>
+    <td><%= group.name %></td>
+    <td><%= link_to "join", join_group_path(group), :method => :post %></td>
+  </tr>
 <%- end %>
+</table>

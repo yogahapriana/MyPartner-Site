@@ -1,4 +1,7 @@
 class GroupsController < ApplicationController
+  layout 'layouts/admin'
+  before_filter :get_user, only: [:edit_user, :update_user, :delete_user]
+
   def index
     @groups = Group.all
   end

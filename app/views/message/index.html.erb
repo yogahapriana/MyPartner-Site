@@ -1,12 +1,17 @@
 <h1>My Inbox</h1>
 <table>
   <tr>
+    <th>No</th>
     <th>Subject</th>
+    <th>From</th>
     <th>Date and Time</th>
   </tr>
+  <% count = 0 %>
   <% @messages.each do |message| %>
     <tr>
+      <td><%= count += 1 %></td>
       <td style="<%= message.readed?(current_user.id) ? "" : "font-weight:bold;" %>"><%= link_to "#{message.subject}", "/reply/#{message.id}" %> </td>
+      <td><%= Message %></td>
       <td>( <%= message.created_at %> )</td>
     </tr>
   <% end %>

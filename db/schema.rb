@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111104033117) do
+ActiveRecord::Schema.define(:version => 20111108065259) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "message_id"
@@ -23,8 +23,30 @@ ActiveRecord::Schema.define(:version => 20111104033117) do
     t.datetime "attached_file_updated_at"
   end
 
+  create_table "conversations", :force => true do |t|
+    t.integer  "message_id"
+    t.integer  "recipient_id"
+    t.text     "body"
+    t.integer  "attachment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "groups", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups_users", :id => false, :force => true do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+  end
+
+  create_table "message_flags", :force => true do |t|
+    t.integer  "message_id"
+    t.integer  "user_id"
+    t.boolean  "readed",     :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,9 +63,9 @@ ActiveRecord::Schema.define(:version => 20111104033117) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.integer  "group_id",   :limit => 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
   end
 
   create_table "recipients", :force => true do |t|
@@ -51,12 +73,19 @@ ActiveRecord::Schema.define(:version => 20111104033117) do
     t.integer  "message_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email_recipient"
+  end
+
+  create_table "replies", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "message_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "content"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",    :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -71,6 +100,8 @@ ActiveRecord::Schema.define(:version => 20111104033117) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "username"
+    t.boolean  "is_admin",                              :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

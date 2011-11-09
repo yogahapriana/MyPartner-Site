@@ -13,9 +13,9 @@ class AdminsController < ApplicationController
     @user.update_attribute("username",params[:user][:username])
 
     if @user.save
-      redirect_to admin_url,notice: 'User has been updated'
+      redirect_to admin_url, notice: 'User has been updated'
     else
-      redirect_to admin_url,notice: 'User failed updated'
+      redirect_to admin_url, notice: 'User failed updated'
     end
   end
 
@@ -25,6 +25,20 @@ class AdminsController < ApplicationController
     redirect_to admin_url
   end
 
+  def new
+
+  end
+  
+  def create_user
+    @user = User.new(params[:user])
+
+    if @user.save
+      redirect_to admin_url, notice: 'User was successfully created.'
+    else
+      redirect_to admin_url, notice: 'User was failed created'
+    end
+  end
+  
   private
 
   def get_user
