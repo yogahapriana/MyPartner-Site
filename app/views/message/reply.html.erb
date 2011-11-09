@@ -2,6 +2,15 @@
   <h1>Replying Message</h1>
   <hr class="line">
   <center>
+    <p><b>
+      Message Sender </b> :
+      <% if current_user.id == @message.user_id %>
+        <%= "You ( #{current_user.username} )" %>
+      <% else  %>
+        <%= "#{User.find(@message.user_id).username}" %>
+      <% end %>
+    </p>
+    <hr class="line">
     <table>
       <tr>
         <th>Recipients</th>
@@ -41,18 +50,26 @@
           <%= @message.text %>
         </td>
       </tr>
-      <tr>
-        <th></th>
-        <th></th>
-        <th><p align ="right"><%=link_to 'Reply','#',onclick: "$('#reply').show();"%></p></th>
-      </tr>
     </table>
     <%-counter = 0%>
     <%@message.replies.each do |reply|%>
     <%counter +=1%>
       <hr class="line">
       <table>
-        <caption>Reply <%=counter%></caption>
+
+        <caption><u><b>
+      <%=
+          if (11..13).include?(counter.to_i.abs % 100)
+            "#{counter}th"
+          else
+            case counter.to_i.abs % 10
+              when 1; "#{counter}st"
+              when 2; "#{counter}nd"
+              when 3; "#{counter}rd"
+              else    "#{counter}th"
+            end
+          end
+      %> Reply</b></u></caption>
         <tr>
           <td>Date/Time</td>
           <td>:</td>
@@ -70,6 +87,8 @@
         </tr>
       </table>
     <%end%>
+  <hr class="line">
+  <p><%=link_to 'Reply','#',onclick: "$('#reply').show();"%></p>
   </center>
   <hr class="line">
   <div id="reply" style="display: none;">

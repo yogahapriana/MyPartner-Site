@@ -47,4 +47,7 @@ class Message < ActiveRecord::Base
       UserMailer.send_message(recipient.user.email, user,self).deliver
     end
   end
+
+
+
 end

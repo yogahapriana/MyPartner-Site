@@ -8,7 +8,8 @@
         <th>Subject</th>
         <th>Recipients</th>
         <th>Replies</th>
-        <th>Date and Time</th>
+        <th>Date</th>
+        <th>Time</th>
       </tr>
       <% count = 0 %>
       <% @message.each do |message| %>
@@ -18,7 +19,8 @@
           <td><%= link_to "#{message.subject}", "/reply/#{message.id}" %> </td>
           <td>( <%= @recipient.count %>  person )</td>
           <td><%= Reply.where(:message_id => message.id).count %></td>
-          <td>( <%= message.created_at %> )</td>
+          <td><%= message.created_at.strftime("%a, %d %b %Y") %></td>
+          <td><%= message.created_at.strftime("%I:%M %p") %></td>
         </tr>
       <% end %>
     </table>

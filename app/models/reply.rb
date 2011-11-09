@@ -19,4 +19,5 @@ class Reply < ActiveRecord::Base
       UserMailer.send_reply_message(recipient.user.email, user, self.message, self).deliver
     end
   end
+  
 end
