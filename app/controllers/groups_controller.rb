@@ -4,17 +4,21 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+    @title = ".:: Listing Groups ::."
   end
 
   def show
     @group = Group.find(params[:id])
+    @title = ".:: Showing #{@group} ::."
   end
 
   def new
+    @title = ".:: Creating Group ::."
     @group = Group.new
   end
 
   def edit
+    @title = ".:: Editing Group ::."
     @group = Group.find(params[:id])
   end
 

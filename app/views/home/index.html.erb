@@ -19,7 +19,7 @@
         <% count = count + 1 %>
         <% @group_name = g.name %>
         <td><%= count.to_s %></td>
-        <td>.</td>
+        <td>-</td>
         <td style="text-align: left;"><%= link_to "#{@group_name}", "/choose_recipients/#{g.id}" %></td>
       </tr>
     <% end %>

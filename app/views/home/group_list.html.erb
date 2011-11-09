@@ -9,7 +9,7 @@
 <%- @groups.each do |group| %>
   <tr>
     <td><%= count += 1 %> </td>
-    <td><%= group.name %></td>
+    <td style="text-align: left;"><%= group.name %></td>
     <td><%= link_to "Join", join_group_path(group), :method => :post %></td>
   </tr>
 <%- end %>

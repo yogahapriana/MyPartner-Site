@@ -3,10 +3,12 @@ class AdminsController < ApplicationController
   before_filter :get_user, only: [:edit_user, :update_user, :delete_user]
   
   def index
+    @title = ".:: Home - Admin Page ::."
     @users = User.where("id !=?",current_user.id)
   end
 
   def edit_user
+    @title = ".:: Editing User ::."
   end
 
   def update_user
@@ -26,7 +28,7 @@ class AdminsController < ApplicationController
   end
 
   def new
-
+    @title = ".:: Creating User ::."
   end
   
   def create_user

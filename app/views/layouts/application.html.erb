@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MyPartnerSite3</title>
+  <title> <%= @title %> </title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -10,7 +10,12 @@
   <center>
 <div id="user_nav">
   <% if user_signed_in? %>
-  Signed in as <b><%= current_user.username %></b>. Not you?
+    <% if current_user.sign_in_count == 1 %>
+      <%= "Welcome, " %>
+    <% else %>
+      <%= "Welcome back, " %>
+    <% end %>
+    <b><%= current_user.username %></b>. Not you?
     <%= link_to "Sign out", destroy_user_session_path %><br />
     <%= link_to "Home", root_path %> |
     <%= link_to "Inbox", inbox_path %> |

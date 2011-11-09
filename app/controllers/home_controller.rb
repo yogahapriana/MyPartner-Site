@@ -5,13 +5,16 @@ class HomeController < ApplicationController
   def index
     @keyword = params["keyword"]
     @groups = @keyword.blank? ? Group.all : Group.named_like(@keyword).uniq
+    @title = ".:: Hello, #{current_user.username} ::."
   end
 
   def group_list
+    @title = ".:: #{current_user.username} - Group List ::."
     @groups = Group.all
   end
 
   def my_groups
+    @title = ".:: #{current_user.username} - My Groups ::."
     @groups = Group.where("users.id=?", current_user.id).includes(:users)
   end
 end

@@ -3,12 +3,14 @@ class MessageController < ApplicationController
 
   def index
     @messages = Message.my_inbox(current_user.id)
+    @title = ".:: #{current_user.username} - Inbox ::."
   end
 
   def choose_recipients
     @group = Group.find(params[:id])
     @partners = @group.users.uniq
     @message = Message.new
+    @title = ".:: #{current_user.username} - Choose Recipients ::."
   end
 
   def send_email
@@ -30,10 +32,12 @@ class MessageController < ApplicationController
   end
 
   def sended_message
+    @title = ".:: #{current_user.username} - Sended Message ::."
     @message = Message.where(:user_id => @user_id)
   end
 
   def reply
+    @title = ".:: Replying Message ::."
     @message_id = params["message_id"]
     @message = Message.find(@message_id)
     @message.readed_by(current_user.id)
