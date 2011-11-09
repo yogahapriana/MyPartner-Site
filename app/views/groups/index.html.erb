@@ -9,7 +9,7 @@
 <% count = 0 %>
 <% @groups.each do |group| %>
   <tr>
-    <td><%= count =+ 1 %></td>
+    <td><%= count += 1 %></td>
     <td><%= group.name %></td>
     <td><%= link_to 'Show', group %></td>
     <td><%= link_to 'Edit', edit_group_path(group) %></td>
