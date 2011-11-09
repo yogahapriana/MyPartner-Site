@@ -2,18 +2,28 @@
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username %></div>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+<table>
+  <tr>
+    <th><%= f.label :username %></th>
+    <td>:</td>
+    <td><%= f.text_field :username, :size => 15 %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :email %></th>
+    <td>:</td>
+    <td><%= f.text_field :email, :size => 15 %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :password %></th>
+    <td>:</td>
+    <td><%= f.password_field :password, :size => 15 %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :password_confirmation %></th>
+    <td>:</td>
+    <td><%= f.password_field :password_confirmation, :size => 15 %></td>
+  </tr>
+</table>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

@@ -1,11 +1,9 @@
 <h1>Listing groups</h1>
-
+<%= link_to 'Create New Group', new_group_path %>
+<hr width="35%" />
 <table>
   <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="4">Name</th>
   </tr>
 
 <% @groups.each do |group| %>
@@ -17,7 +15,5 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Group', new_group_path %> | 
+<hr width="35%" />
+Company Name

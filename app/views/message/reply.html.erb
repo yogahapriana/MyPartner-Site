@@ -50,19 +50,23 @@
     <%-counter = 0%>
     <%@message.replies.each do |reply|%>
     <%counter +=1%>
+      <hr class="line">
       <table>
-        <caption><%=counter%>st Reply</caption>
+        <caption>Reply <%=counter%></caption>
         <tr>
           <td>Date/Time</td>
+          <td>:</td>
           <td><%=reply.created_at.to_date%></td>
         </tr>
         <tr>
           <td>Reply From</td>
-             <td><%=reply.user.username%></td>
+          <td>:</td>
+          <td><%=reply.user.username%></td>
         </tr>
         <tr>
           <td>Text</td>
-           <td><%=reply.content%></td>
+          <td>:</td>
+          <td><%=reply.content%></td>
         </tr>
       </table>
     <%end%>

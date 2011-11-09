@@ -1,12 +1,18 @@
 <h2>Choose group</h2>
+<hr width="35%" />
 <table>
   <tr>
+    <th>No</th>
     <th colspan="2">Group Name</th>
   </tr>
+  <% count = 0 %>
 <%- @groups.each do |group| %>
   <tr>
+    <td><%= count += 1 %> </td>
     <td><%= group.name %></td>
-    <td><%= link_to "join", join_group_path(group), :method => :post %></td>
+    <td><%= link_to "Join", join_group_path(group), :method => :post %></td>
   </tr>
 <%- end %>
 </table>
+<hr width="35%" />
+Company Name

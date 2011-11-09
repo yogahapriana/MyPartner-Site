@@ -1,9 +1,11 @@
 <h1>My Inbox</h1>
+<hr width="35%" />
 <table>
   <tr>
     <th>No</th>
     <th>Subject</th>
     <th>From</th>
+    <th>Replies</th>
     <th>Date and Time</th>
   </tr>
   <% count = 0 %>
@@ -11,10 +13,11 @@
     <tr>
       <td><%= count += 1 %></td>
       <td style="<%= message.readed?(current_user.id) ? "" : "font-weight:bold;" %>"><%= link_to "#{message.subject}", "/reply/#{message.id}" %> </td>
-      <td><%= Message %></td>
+      <td><%= User.find(message.user_id).username %></td>
+      <td><%= Reply.where(:message_id => message.id).count %></td>
       <td>( <%= message.created_at %> )</td>
     </tr>
   <% end %>
 </table>
-
-
+<hr width="35%" />
+Company Name

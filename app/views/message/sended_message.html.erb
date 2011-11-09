@@ -17,7 +17,7 @@
           <td><%= count += 1 %></td>
           <td><%= link_to "#{message.subject}", "/reply/#{message.id}" %> </td>
           <td>( <%= @recipient.count %>  person )</td>
-          <td>( <%= Reply.where(:message_id => message.id).count %> Replies ) </td>
+          <td><%= Reply.where(:message_id => message.id).count %></td>
           <td>( <%= message.created_at %> )</td>
         </tr>
       <% end %>

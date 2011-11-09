@@ -1,7 +1,18 @@
 <h2>My group</h2>
-
+<hr width="35%" />
+<table>
+  <tr>
+    <th>No</th>
+    <th>Group Name</th>
+  </tr>
+  <% count = 0 %>
 <%- @groups.each do |group| %>
-  <div>
-    <%= group.name %>
-  </div>
+  <tr>
+    <td><%= count += 1 %></td>
+    <td><%= group.name %></td>
+  </tr>
 <%- end %>
+</table>
+<hr width="35%" />
+Company Name
+
