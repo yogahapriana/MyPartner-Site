@@ -11,13 +11,13 @@
 <div id="user_nav">
   <% if user_signed_in? %>
     <% if current_user.sign_in_count == 1 %>
-      <%= "Welcome, " %>
+      <%= "Welcome in your first fisit, " %>
     <% else %>
       <%= "Welcome back, " %>
     <% end %>
     <b><%= current_user.username %></b>. Not you?
     <%= link_to "Sign out", destroy_user_session_path %><br />
-    <%= link_to "Home", root_path(:keyword => "") %> |
+    <%= button_to "Home", root_path(:keyword => ""), :method => :post %> |
     <%= link_to "Inbox", inbox_path %> |
     <%= link_to "Sended Message", sended_message_path %> |
     <%= link_to "My Group", my_groups_path %> |

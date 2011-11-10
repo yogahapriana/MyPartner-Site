@@ -1,4 +1,4 @@
-<%= @sender.username %> send you replied message on Mypartnert-Site from message :
+<%= @sender.username %> send you replied message on <%= link_to "MyPartner-Site", "http://electric-robot-8555.heroku.com" %> : from message :
 <br/>
 <%= @message.text %>
 <br/>
@@ -6,4 +6,4 @@
 <br/>
 <%= @reply.content %>
 <br/>
-You can check the message here : <%= @url %>
+You can check the message here : <%= link_to  "@url", "@url" %>
