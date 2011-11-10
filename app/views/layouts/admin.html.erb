@@ -16,7 +16,7 @@
             <%= link_to "Create User", admin_url %> |
             <%= link_to "Create Group", groups_path %>
           <% else %>
-            You're not an admin, fellas! <%= link_to "Back to Home", root_path %>
+            You're not an admin, <strike>fellas!</strike> <%= link_to "Back to Home", root_path %>
           <% end %>
         <% else %>
           <%= link_to "Sign in", new_user_session_path %> or
