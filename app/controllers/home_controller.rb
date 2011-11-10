@@ -4,7 +4,12 @@ class HomeController < ApplicationController
   before_filter :after_signup?, :only => [:index]
   def index
     @keyword = params["keyword"]
-    @groups = @keyword.blank? ? Group.all : Group.named_like(@keyword).uniq
+#    @groups = @keyword.blank? ? Group.all : Group.named_like(@keyword).uniq
+    if @keyword==""
+      @groups = Array.new()
+    else
+      @groups = @keyword.blank? ? Group.all : Group.named_like(@keyword).uniq
+    end
     @title = ".:: Hello, #{current_user.username} ::."
   end
 

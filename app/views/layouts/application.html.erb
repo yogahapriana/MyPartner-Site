@@ -17,7 +17,7 @@
     <% end %>
     <b><%= current_user.username %></b>. Not you?
     <%= link_to "Sign out", destroy_user_session_path %><br />
-    <%= link_to "Home", root_path %> |
+    <%= link_to "Home", root_path(:keyword => "") %> |
     <%= link_to "Inbox", inbox_path %> |
     <%= link_to "Sended Message", sended_message_path %> |
     <%= link_to "My Group", my_groups_path %> |
