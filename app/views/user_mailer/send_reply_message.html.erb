@@ -1,13 +1,13 @@
-Hello, <%= @sender.username %> was send you a replied message on <%= link_to "MyPartner-Site", "http://electric-robot-8555.heroku.com" %> : from message :
+Hello, <%= @sender.username %> was send you a replied message on <%= link_to "MyPartner-Site", "http://electric-robot-8555.heroku.com" %> :
 <hr/>
 <table>
   <tr>
-    <th>Text</th>
+    <th style="text-align: left">Text</th>
     <td>:</td>
     <td><%= @message.text %></td>
   </tr>
   <tr>
-    <th><%= @sender.username %> reply</th>
+    <th style="text-align: left">Reply</th>
     <td>:</td>
     <td><%= @reply.content %></td>
   </tr>
