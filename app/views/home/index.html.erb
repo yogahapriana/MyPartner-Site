@@ -14,13 +14,15 @@
     <% count=0 %>
     <center />
     <table>
-    <% @groups.each do |g| %>
       <tr>
+        <td style="text-align: left;">
+    <% @groups.each do |g| %>
         <% count = count + 1 %>
         <% @group_name = g.name %>
-        <td style="text-align: left;"><%= count.to_s %>) <%= link_to "#{@group_name}", "/choose_recipients/#{g.id}" %></td>
-      </tr>
+        <%= count.to_s %>) <%= link_to "#{@group_name}", "/choose_recipients/#{g.id}" %><br />
     <% end %>
+        </td>
+      </tr>
     </table>
   <% end %>
   <hr class="line" />

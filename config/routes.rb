@@ -4,8 +4,7 @@ MyPartnerSite3::Application.routes.draw do
 
   resources :groups
 
-  resources :partners
-
+#  resources :partners
 
   resources :replies do
     member do

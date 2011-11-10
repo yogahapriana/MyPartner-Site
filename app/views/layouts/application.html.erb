@@ -7,27 +7,30 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <center>
-<div id="user_nav">
-  <% if user_signed_in? %>
-    <% if current_user.sign_in_count == 1 %>
-      <%= "Welcome in your first fisit, " %>
-    <% else %>
-      <%= "Welcome back, " %>
-    <% end %>
-    <b><%= current_user.username %></b>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path %><br />
-    <%= link_to "Home", root_path(:keyword => "") %> |
-    <%= link_to "Inbox", inbox_path %> |
-    <%= link_to "Sent Message", sent_message_path %> |
-    <%= link_to "My Group", my_groups_path %> |
-    <%= link_to "Group List", group_list_path %>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path %> or
-    <%= link_to "Sign up", new_user_registration_path %>
-  <% end %>
+  <center />
+  <div class="user_nav">
+            <% if user_signed_in? %>
+                  <% if current_user.sign_in_count == 1 %>
+                    <%= "Welcome in your first fisit, " %>
+                  <% else %>
+                    <%= "Welcome back, " %>
+                  <% end %>
+                  <b><%= current_user.username %></b>
+                  <%= ". Not you?"  %>
+                  <%= link_to "Sign out", destroy_user_session_path %> <br />
+                  <%= link_to "Home", root_path(:keyword => "") %> |
+                  <%= link_to "Inbox", inbox_path %> |
+                  <%= link_to "Sent Message", sent_message_path %> |
+                  <%= link_to "My Group", my_groups_path %> |
+                  <%= link_to "Group List", group_list_path %> |
+
+              <% else %>
+                  <%= link_to "Sign in", new_user_session_path %>
+                  <%= link_to "Sign up", new_user_registration_path %>
+              <% end %>
 </div>
-<%= yield %>
+      <%= yield %>
   </center>
 </body>
 </html>
+
