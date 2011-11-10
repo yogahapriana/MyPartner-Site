@@ -1,9 +1,16 @@
-<%= @sender.username %> send you replied message on <%= link_to "MyPartner-Site", "http://electric-robot-8555.heroku.com" %> : from message :
-<br/>
-<%= @message.text %>
-<br/>
-<%= @sender.username %> message :
-<br/>
-<%= @reply.content %>
-<br/>
-You can check the message here : <%= link_to  "@url", "@url" %>
+Hello, <%= @sender.username %> was send you a replied message on <%= link_to "MyPartner-Site", "http://electric-robot-8555.heroku.com" %> : from message :
+<hr/>
+<table>
+  <tr>
+    <th>Text</th>
+    <td>:</td>
+    <td><%= @message.text %></td>
+  </tr>
+  <tr>
+    <th><%= @sender.username %> reply</th>
+    <td>:</td>
+    <td><%= @reply.content %></td>
+  </tr>
+</table>
+<hr/>
+You can check the message <%= link_to  "HERE", "#{@url}" %>
