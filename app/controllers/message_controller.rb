@@ -22,7 +22,7 @@ class MessageController < ApplicationController
     @message = Message.new(params[:message])
     if @message.save
       @message.send_mail_message(current_user)
-      redirect_to sended_message_path
+      redirect_to sent_message_path
     else
       @group = Group.find(params[:id])
       @partners = @group.partners
@@ -32,7 +32,7 @@ class MessageController < ApplicationController
   end
 
   def sended_message
-    @title = ".:: #{current_user.username} - Sended Message ::."
+    @title = ".:: #{current_user.username} - Sent Message ::."
     @message = Message.where(:user_id => @user_id)
   end
 

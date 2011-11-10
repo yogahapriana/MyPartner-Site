@@ -71,19 +71,17 @@
           end
       %> Reply</b></u></caption>
         <tr>
-          <td>Date/Time</td>
-          <td>:</td>
-          <td><%=reply.created_at.to_date%></td>
+          <td colspan="3"><%= reply.created_at.strftime("%a, %d %b %Y") %> on <%= reply.created_at.strftime("%I:%M %p") %></td>
         </tr>
         <tr>
-          <td>Reply From</td>
+          <td style="text-align: left">Reply From</td>
           <td>:</td>
-          <td><%=reply.user.username%></td>
+          <td style="text-align: left"><%= reply.user.username %></td>
         </tr>
         <tr>
-          <td>Text</td>
+          <td style="text-align: left">Text</td>
           <td>:</td>
-          <td><%=reply.content%></td>
+          <td style="text-align: left"><%=  reply.content %></td>
         </tr>
       </table>
     <%end%>

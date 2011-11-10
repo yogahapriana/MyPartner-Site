@@ -44,7 +44,7 @@ MyPartnerSite3::Application.routes.draw do
   get "choose_recipients/:id", :to => "message#choose_recipients"
   #  get "choose_recipients/:group_id", :to => "messages#choose_recipients"
   post "send_email/", :to => "message#send_email"
-  get "sended_message/", :to => "message#sended_message"
+  get "sent_message/", :to => "message#sended_message"
   get "reply/:message_id", :to => "message#reply"
   post "attachments/:id/download", :to => "message#download_attachment", :as => :download_attachment
 
