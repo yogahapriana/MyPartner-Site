@@ -1,8 +1,9 @@
+<center />
 Hello, <%= @sender.username %> was send you a replied message on <%= link_to "MyPartner-Site", "http://electric-robot-8555.heroku.com" %> :
-<hr/>
+<hr width="50%"/>
 <table>
   <tr>
-    <th style="text-align: left">Text</th>
+    <th style="text-align: left">Message Content</th>
     <td>:</td>
     <td><%= @message.text %></td>
   </tr>
@@ -12,5 +13,6 @@ Hello, <%= @sender.username %> was send you a replied message on <%= link_to "My
     <td><%= @reply.content %></td>
   </tr>
 </table>
-<hr/>
+<hr width="50%"/>
 You can check the message <%= link_to  "HERE", "#{@url}" %>
+Thanks, Fellas!
