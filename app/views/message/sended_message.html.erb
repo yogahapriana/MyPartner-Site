@@ -1,15 +1,14 @@
 <div class="message">
-  <h1><%= current_user.username %> - ( <%= @message.count %> Email Sent ) </h1>
-  <hr class="line" />
+  <hr width="50%" />
   <center>
     <table>
       <tr>
-        <th>No</th>
-        <th>Subject</th>
-        <th>Recipients</th>
-        <th>Replies</th>
-        <th>Date</th>
-        <th>Time</th>
+        <th style="text-align: left">No</th>
+        <th style="text-align: left">Subject</th>
+        <th style="text-align: left">Recipients</th>
+        <th style="text-align: left">Replies</th>
+        <th style="text-align: left">Date</th>
+        <th style="text-align: left">Time</th>
       </tr>
       <% count = 0 %>
       <% @message.each do |message| %>
@@ -40,6 +39,5 @@
       <% end %>
     </table>
   </center>
-  <hr class="line" />
-  <p>Company Name</p>
+  <hr width="50%" />
 </div>

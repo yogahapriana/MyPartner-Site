@@ -4,6 +4,7 @@ class MessageController < ApplicationController
   def index
     @messages = Message.my_inbox(current_user.id)
     @title = ".:: #{current_user.username} - Inbox ::."
+    @header_name = "Inbox - " + current_user.username + " ( " + @messages.count.to_s + " Messages ) "
   end
 
   def choose_recipients
@@ -34,9 +35,11 @@ class MessageController < ApplicationController
   def sended_message
     @title = ".:: #{current_user.username} - Sent Message ::."
     @message = Message.where(:user_id => @user_id)
+    @header_name = "Sentbox - " + current_user.username + " ( " + @message.count.to_s + " Email Sent ) "
   end
 
   def reply
+    @header_name = "Replying Message"
     @title = ".:: Replying Message ::."
     @message_id = params["message_id"]
     @message = Message.find(@message_id)

@@ -1,0 +1,628 @@
+@charset "UTF-8";
+/* 
+
+Modern Business 1 CSS File
+
+Created By: Jonathan Atkinson
+Web: www.theaterwebsiteservices.com
+Copyright - TWS
+
+
+USE THIS STYLE SHEET FOR ALL INTERNAL PAGES - THIS HAS A SMALLER HEADER IMAGE AREA
+
+*/
+
+reply {
+
+}
+
+th, td {
+   padding: 10px;
+   font-size: 15px;
+}
+
+body {
+    background-color:#ffffff;
+    color:#3a3a3a;
+    text-align:center;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 18px;
+    font-size:12px;
+    background-image: url(bground2.jpg);
+    background-repeat: repeat-x;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+a {
+    color:#740404;
+    text-decoration:none;
+}
+
+a:hover {
+    color:#740404;
+    text-decoration:underline;
+}
+
+a img { border: none }
+
+hr {
+    height: 2px;
+    border: 0px;
+    background: #3a3a3a;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:24px;
+    color:#5d5b56;
+    font-weight: normal;
+    letter-spacing: -1px;
+    padding-bottom: 15px;
+    margin-top: 30px;
+}
+
+
+h2 {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:18px;
+    color:#5d5b56;
+    letter-spacing: -1px;
+    font-weight: normal;
+}
+
+#centerColumn {
+    width:1000px;
+    text-align:center;
+    margin:0 auto;
+}
+
+
+
+#header {
+    height:55px;
+    text-align: right;
+    font-size: 14px;
+    background-image: url(logo.png);
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    color:#ffffff;
+    font-weight:bold;
+}
+
+#header a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    color:#ffffff;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+#header a:hover {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    color:#5d5b56;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+#InfoPanel {
+    height: 297px;
+    width:1000px;
+    background-image: url(info_panel_bground.jpg);
+    background-repeat: no-repeat;
+}
+
+
+#InfoPanel2 {
+    height: 87px;
+    width:1000px;
+    background-image: url(info_panel_bground.jpg);
+    background-repeat: no-repeat;
+}
+
+#InfoPanel_left {
+    float:left;
+    text-align:left;
+    line-height: 18px;
+    width: 900px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:30px;
+    color:#ffffff;
+    padding-top: 15px;
+}
+
+
+.carousel_main {
+    width: 472px;
+    height:219px;
+    float: right;
+}
+
+#InfoPanel_right {
+    float: right;
+    width:600px;
+    text-align: right;
+}
+form{padding:0; margin:0;}
+
+#navbar {
+    width: 1000px;
+    height:57px;
+}
+
+#topnav {
+    padding:1px 0 0 0;
+    text-align: left;
+    text-decoration: none;
+    width: 700px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    font-size:18px;
+    color:#5d5b56;
+    float: left;
+}
+
+
+#topnav a {
+    color:#5d5b56;
+}
+
+#topnav a.active {
+    color:#5d5b56;
+}
+
+#topnav a.active:hover {
+    color:#5d5b56;
+}
+
+
+
+
+#topnav ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:18px;
+    font-weight:bold;
+    padding-top: 10px;
+}
+
+#topnav li {
+    margin:0;
+    display:inline;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:18px;
+    font-weight:bold;
+}
+
+#topnav li a{
+    margin:0;
+    display:inline;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:18px;
+    font-weight:bold;
+    color: #a05654;
+}
+
+#topnav li a:hover {
+    color:#333333;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:18px;
+    font-weight:bold;
+}
+
+#topnav li .active a {
+
+    color:#5d5b56;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:18px;
+    font-weight:bold;
+
+}
+
+#topnav li .active:hover {
+    color:#333333;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:18px;
+    font-weight:bold;
+
+}
+
+.searchbox {
+    float:right;
+    margin:12px 0 0 0;
+    padding:0;
+    width:270px;
+    height:29px;
+    background:transparent url(search_box.png) no-repeat scroll 0 0;
+}
+
+.searchbox2 {
+    margin:12px 0 0 0;
+    padding:0;
+    width:270px;
+    height:29px;
+    background:transparent url(search_box.png) no-repeat scroll 0 0;
+}
+
+.search {
+    border:medium none;
+    float:left;
+    height:20px;
+    margin:0;
+    padding:7px 2px 3px 10px;
+    width:170px;
+    background-color: transparent;
+}
+
+#nav_shadow {
+    background-image:url(navbar_shadow.png);
+    height:12px;
+    background-repeat: no-repeat;
+    text-align: center;
+    width: 1000px;
+}
+
+#content_left1{
+    float:left;
+    width:600px;
+    text-align: left;
+}
+
+#content_left2{
+    float:left;
+    width:600px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+
+#content_left3{
+    float:left;
+    width:400px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.quote {
+    background:url('quote_box.png') no-repeat left top;
+    padding-top: 20px;
+    padding-left: 50px;
+    color:#5d5b56;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:18px;
+    font-style:italic;
+    width: 400px;
+    height: 81px;
+    padding-right: 60px;
+    margin-top: 20px;
+}
+
+#content_right{
+    float:right;
+    width:371px;
+    margin-top: 20px;
+}
+
+
+#content_right1{
+    float:right;
+    width:371px;
+    text-align: right;
+    padding-top: 10px;
+    background-image: url(map_box.png);
+    height: 239px;
+}
+
+#content_right2{
+    float:right;
+    width:371px;
+    text-align: right;
+    padding-top: 10px;
+    background-image: url(right_column_box1.png);
+    height: 164px;
+}
+
+#content_right3{
+    float:right;
+    width:371px;
+    margin-top: 20px;
+    text-align:right;
+}
+
+#content_right4{
+    float:right;
+    width:371px;
+    text-align: right;
+    padding-top: 10px;
+    background-image: url(right_column_box2.png);
+    height: 619px;
+}
+
+#content_right5{
+    float:right;
+    width:550px;
+    text-align: left;
+    padding-top: 20px;
+    height: 619px;
+}
+
+.work {
+    float:left;
+    width: 1000px;
+    margin-top: 30px;
+}
+
+.work_left{
+    float:left;
+    width: 400px;
+}
+
+.work_right{
+    float:right;
+    width: 580px;
+    text-align:left;
+}
+
+
+
+#text_right1{
+    float: right;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+.medium_header {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:18px;
+    color:#5d5b56;
+    letter-spacing: -1px;
+    font-weight: normal;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+#footer {
+    width:100%;
+    background-color:#000;
+    height: 135px;
+    background-image: url(footer.jpg);
+    background-repeat: repeat-x;
+    clear: both;
+    padding-top: 50px;
+    text-align:center;
+    margin:0 auto;
+}
+
+
+#footer_content{
+    width: 1000px;
+    height: 80px;
+    margin:0 auto;
+}
+#footer_left {
+    float:left;
+    text-align:left;
+    line-height: 18px;
+    width: 600px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    color:#f9f7e8;
+    padding: 5px 5px 5px 5px;
+    font-style: normal;
+}
+
+#footer_right1 {
+    float:left;
+    width: 165px;
+    text-align:left;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    height: 100px;
+    color: #878787;
+}
+
+
+.copyright {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:10px;
+    color:#959595;
+    font-variant:small-caps;
+    text-align: left;
+}
+
+.copyright a {
+    text-decoration:none;
+    color:#959595;
+}
+
+.copyright a:hover {
+    text-decoration:underline;
+    color:#959595;
+}
+
+
+#bottomnav {
+    padding:1px 0 0 0;
+    text-align: left;
+    text-decoration: none;
+    width: 600px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    color:#bdbdbd;
+    float: left;
+}
+
+
+#bottomnav a {
+    color:#bdbdbd;
+}
+
+#bottomnav a.active {
+    color:#ffffff;
+}
+
+#bottomnav a.active:hover {
+    color:#ffffff;
+}
+
+
+
+
+#bottomnav ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    padding-right: 5px;
+}
+
+#bottomnav li {
+    margin:0;
+    display:inline;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    padding-right: 5px;
+}
+
+#bottomnav li a{
+    margin:0;
+    display:inline;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    color: #bdbdbd;
+    padding-right: 5px;
+}
+
+#bottomnav li a:hover {
+    color:#ffffff;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    padding-right: 5px;
+}
+
+#bottomnav li .active a {
+
+    color:#ffffff;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    padding-right: 5px;
+
+}
+
+#bottomnav li .active:hover {
+    color:#bdbdbd;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    padding-right: 5px;
+
+}
+
+
+#navlist
+{
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+#navlist li
+{
+    padding-left: 20px;
+    background-image: url(bullet.png);
+    background-repeat: no-repeat;
+    background-position: 0 .5em;
+}
+
+
+.contactform {
+    margin:0px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    color:#3a3a3a;
+    width:500px;
+    text-align: left;
+}
+
+.contactform input {
+    padding:6px;
+    border:1px solid #afaca2;
+    width:212px;
+    height:20px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    color:#3a3a3a;
+    background: url(contact_bg.html) repeat-x top #FFF;
+}
+
+.contactform textarea {
+    padding:5px;
+    border:1px solid #afaca2;
+    width:300px;
+    height:100px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    color:#3a3a3a;
+    background: url(contact_bg.html) repeat-x top #FFF;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.error {
+    border:1px solid #740404; background-color:#ffffff; color:#3a3a3a; padding:5px;width:383px;
+}
+
+.contactform label {
+    min-width: 150px;
+    float: left;
+    padding: 4px;
+    padding-left: 0;
+    font-weight: bold;
+}
+
+input.sendbutton {
+    margin-top:10px;
+    margin-left: 154px;
+    display:block;
+    border:0;
+    width:100px;
+    height: auto;
+    font-size:11px;
+    padding-left:2px;
+    padding-right:2px;
+    padding-top:6px;
+    padding-bottom:6px;
+    line-height:14px;
+    background: #afaca2;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.office_info {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:14px;
+    color:#740404;
+    text-decoration:none;
+    font-style:italic;
+}

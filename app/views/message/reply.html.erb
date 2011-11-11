@@ -1,16 +1,14 @@
 <div class="message">
-  <h1>Replying Message</h1>
-  <hr class="line">
+  <hr width="50%">
   <center>
-    <p><b>
-      Message Sender </b> :
+    <p style="font-size: 15px;"><b>Message Sender </b> :
       <% if current_user.id == @message.user_id %>
         <%= "You ( #{current_user.username} )" %>
       <% else  %>
         <%= "#{User.find(@message.user_id).username}" %>
       <% end %>
     </p>
-    <hr class="line">
+    <hr width="50%">
     <table>
       <tr>
         <th>Recipients</th>
@@ -54,10 +52,10 @@
     <%-counter = 0%>
     <%@message.replies.each do |reply|%>
     <%counter +=1%>
-      <hr class="line">
+      <hr width="50%">
       <table>
 
-        <caption><u><b>
+        <caption><font size="3px"><u><b>
       <%=
           if (11..13).include?(counter.to_i.abs % 100)
             "#{counter}th"
@@ -69,7 +67,7 @@
               else    "#{counter}th"
             end
           end
-      %> Reply</b></u></caption>
+      %> Reply</b></u></font></caption>
         <tr>
           <td colspan="3"><%= reply.created_at.strftime("%a, %d %b %Y") %> on <%= reply.created_at.strftime("%I:%M %p") %></td>
         </tr>
@@ -85,14 +83,11 @@
         </tr>
       </table>
     <%end%>
-  <hr class="line">
-  <p><%=link_to 'Reply','#',onclick: "$('#reply').show();"%></p>
-  </center>
-  <hr class="line">
-  <div id="reply" style="display: none;">
+  <hr width="50%"">
     <%=form_tag reply_message_reply_path(@message.id) do%>
       <%=text_area_tag 'content'%>
       <%=submit_tag 'Submit'%>
     <%end%>
-  </div>
+  </center>
+  <hr width="50%">
 </div>

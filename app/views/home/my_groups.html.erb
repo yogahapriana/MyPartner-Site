@@ -1,18 +1,16 @@
-<h2>My group</h2>
+<center />
 <hr width="35%" />
 <table>
   <tr>
     <th>No</th>
-    <th>Group Name</th>
+    <th style="text-align: left">Group Name</th>
   </tr>
   <% count = 0 %>
 <%- @groups.each do |group| %>
   <tr>
     <td><%= count += 1 %></td>
-    <td><%= group.name %></td>
+    <td style="text-align: left"><%= group.name %></td>
   </tr>
 <%- end %>
 </table>
 <hr width="35%" />
-Company Name
-

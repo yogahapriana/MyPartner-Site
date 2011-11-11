@@ -24,7 +24,7 @@ MyPartnerSite3::Application.routes.draw do
   get "group_list" => "home#group_list", :as => :group_list
   get "my_groups" => "home#my_groups", :as => :my_groups
 
-  post "groups/:id/join" => "groups#join", :as => :join_group
+  get "groups/:id/join" => "groups#join", :as => :join_group
 
   #  get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   #  devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
