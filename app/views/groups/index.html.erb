@@ -1,21 +1,23 @@
-<h1>Listing groups</h1>
-<%= link_to 'Create New Group', new_group_path %>
-<hr width="35%" />
-<table>
-  <tr>
-    <th>No</th>
-    <th colspan="4">Name</th>
-  </tr>
-<% count = 0 %>
-<% @groups.each do |group| %>
-  <tr>
-    <td><%= count += 1 %></td>
-    <td><%= group.name %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<% if current_user.is_admin %>
+  <h1>Listing groups</h1>
+  <%= link_to 'Create New Group', new_group_path %>
+  <hr width="35%" />
+  <table>
+    <tr>
+      <th>No</th>
+      <th colspan="4">Name</th>
+    </tr>
+    <% count = 0 %>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= count += 1 %></td>
+        <td><%= group.name %></td>
+        <td><%= link_to 'Show', group %></td>
+        <td><%= link_to 'Edit', edit_group_path(group) %></td>
+        <td><%= link_to 'Destroy', group, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+  <hr width="35%" />
+  Company Name
 <% end %>
-</table>
-<hr width="35%" />
-Company Name

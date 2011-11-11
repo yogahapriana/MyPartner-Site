@@ -2,8 +2,7 @@ class GroupsController < ApplicationController
   layout 'layouts/admin'
   before_filter :authenticate_user!
   before_filter :user_admin?
-  before_filter :get_user, only: [:edit_user, :update_user, :delete_user]
-
+  
   def index
     @groups = Group.all
     @title = ".:: Listing Groups ::."
