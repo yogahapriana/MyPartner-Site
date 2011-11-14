@@ -1,38 +1,21 @@
-<div class="home">
-  <h1>Searching Groups</h1>
+<div id="home">
   <center />
-  <div class="searchbox2">
-    <%= form_tag root_path do %>
-      <%= text_field_tag(:keyword, "", :class => "search", :onblur => "if (this.value=='') {this.value='Searching groups...'; }", :onfocus => "if (this.value=='Searching groups...') {this.value=''; }", :value => "Searching groups...") %>
-      <%= image_submit_tag "search_button_clear.gif" %>
-    <% end %>
-  </div>
-  <br />
-
+  <%= form_tag root_path do %>
+    <%= text_field_tag(:keyword, "", :class => "input", :onblur => "if (this.value=='') {this.value='Searching groups...'; }", :onfocus => "if (this.value=='Searching groups...') {this.value=''; }", :value => "Searching groups...") %>
+    <%= submit_tag "Search", :class => "button-primary" %>
+  <% end %>
   <% if @groups.count==0 %>
-    <%= "There is no result with keyword \"#{@keyword}\"" %>
+    <%= form_tag do %>
+      <p class="p_home"><%= label_tag "No result found" %></p>
+    <% end %>
   <% else %>
-    <font size="4px"><%= "Results of group with keyword \"#{@keyword}\" : " %></font><br />
-    <% count=0 %>
-    <table>
-      <tr>
-        <td>
-          <% @groups.each do |g| %>
-            <% count = count + 1 %>
-            <% @group_name = g.name %>
-            <%= count.to_s %>) <%= link_to "#{@group_name}", "/choose_recipients/#{g.id}" %><br />
-          <% end %>
-        </td>
-      </tr>
-    </table>
+    <%= form_tag do %>
+      <p class="p_home"><%= "Result with keyword #{@keyword} is :" %><br />
+        <% @groups.each do |g| %>
+          <% @group_name = g.name %>
+          <%= link_to "#{@group_name}", "/choose_recipients/#{g.id}" %><br />
+        <% end %>
+      </p>
+    <% end %>
   <% end %>
 </div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />

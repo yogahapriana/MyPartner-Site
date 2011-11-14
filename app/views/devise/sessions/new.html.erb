@@ -1,33 +1,60 @@
-<!-- This is the container box for the left hand side of the page -->
-<div id="inner_content_left">
-
-  <hr width="35%" />
-  <% @header_name = "Sign In." %>
-  <% @title = ".:: Sign In ::." %>
-  <% @class_active_sign_in = "active" %>
-  <% @class_active_sign_up = "" %>
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => "contactForm")  do |f| %>
-    <center />
-    <table>
-      <tr>
-        <th style="text-align: right"><%= f.label :email %></th>
-        <td></td>
-        <td><%= f.email_field :email, :size => 15 %></td>
-      </tr>
-      <tr>
-        <th style="text-align: right"><%= f.label :password %></th>
-        <td></td>
-        <td><%= f.password_field :password, :size => 15 %></td>
-      </tr>
-    </table>
-    <hr width="35%" />
+<div id="login">
+  <%= form_for :user do |f| %>
+    <p>
+      <label>
+        <%= f.label :email %><br />
+        <%= f.email_field :email, :class => "input" %>
+      </label>
+    </p>
+    <p>
+      <label>
+        <%= f.label :password %><br />
+        <%= f.password_field :password, :class => "input" %>
+      </label>
+    </p>
     <% if devise_mapping.rememberable? -%>
-      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+      <div>
+        <%= f.check_box :remember_me %> <%= f.label :remember_me %> <br />
+        <%= render :partial => "devise/shared/links" %>
+      </div>
     <% end -%>
-
-    <div><%= f.submit "Sign in" %></div>
+    <p class="submit">
+      <%= f.submit "Sign In", :class => "button-primary" %><br />
+    </p>
   <% end %>
-  <%= render :partial => "devise/shared/links" %>
+  <script type="text/javascript">
+    function wp_attempt_focus(){
+      setTimeout( function(){ try{
+          d = document.getElementById('user_login');
+          d.focus();
+          d.select();
+        } catch(e){}
+      }, 200);
+    }
 
+    wp_attempt_focus();
+    if(typeof wpOnload=='function')wpOnload();
+  </script>
 </div>
-<!-- End OF INNER_CONTENT_LEFT -->
+
+
+<link rel='stylesheet' id='tabs_css-css'  href='https://s-ssl.wordpress.com/wp-content/themes/h4/tabs/tab.css?m=1320801719g&#038;ver=20110821' type='text/css' media='all' />
+<link rel='stylesheet' id='post-reactions-css'  href='https://s-ssl.wordpress.com/wp-content/mu-plugins/post-flair/style.css?m=1320688950g&#038;ver=3' type='text/css' media='all' />
+<script type="text/javascript">
+  // <![CDATA[
+  (function() {
+    try{
+      if ( window.external &&'msIsSiteMode' in window.external) {
+        if (window.external.msIsSiteMode()) {
+          var jl = document.createElement('script');
+          jl.type='text/javascript';
+          jl.async=true;
+          jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(jl, s);
+        }
+      }
+    }catch(e){}
+  })();
+  // ]]>
+</script>

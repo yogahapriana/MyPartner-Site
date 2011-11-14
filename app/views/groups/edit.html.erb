@@ -1,8 +1,4 @@
 <% if current_user.is_admin %>
-  <h1>Editing group</h1>
-
+  <center />
   <%= render 'form' %>
-
-  <%= link_to 'Show', @group %> |
-  <%= link_to 'Back', groups_path %>
 <% end %>

@@ -1,0 +1,35 @@
+<center />
+<% @title = ".:: Sign Up ::." %>
+<% @header_name = "Sign Up." %>
+<% @sign_in_class = "" %>
+<% @sign_up_class = "current" %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  <hr width="35%" />
+  <table>
+    <tr>
+      <th style="text-align: right"><%= f.label :username %></th>
+      <td></td>
+      <td><%= f.text_field :username, :size => 15 %></td>
+    </tr>
+    <tr>
+      <th style="text-align: right"><%= f.label :email %></th>
+      <td></td>
+      <td><%= f.text_field :email, :size => 15 %></td>
+    </tr>
+    <tr>
+      <th style="text-align: right"><%= f.label :password %></th>
+      <td></td>
+      <td><%= f.password_field :password, :size => 15 %></td>
+    </tr>
+    <tr>
+      <th style="text-align: right"><%= f.label :password_confirmation %></th>
+      <td></td>
+      <td><%= f.password_field :password_confirmation, :size => 15 %></td>
+    </tr>
+  </table>
+  <hr width="35%" />
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

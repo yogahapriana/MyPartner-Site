@@ -1,7 +1,9 @@
 <% if current_user.is_admin %>
-  Edit User
-  <%=  form_tag update_user_path(@user.id),method: :put do %>
-    <%= text_field_tag 'user[username]',@user.username %>
-    <%= submit_tag 'Submit' %>
-  <%  end %>
+  <div id="edit_user">
+    <%=  form_tag update_user_path(@user.id),method: :put do %>
+      <%= text_field_tag 'user[username]',@user.username, :class => "input" %>
+      <%= submit_tag 'Change', :class => "button-primary" %>
+      <%= submit_tag 'Back', :url => admin_url, :class => "button-primary" %>
+    <%  end %>
+  </div>
 <% end %>

@@ -1,93 +1,91 @@
-<div class="message">
-  <hr width="50%">
+<div id="reply">
   <center>
-    <p style="font-size: 15px;"><b>Message Sender </b> :
-      <% if current_user.id == @message.user_id %>
-        <%= "You ( #{current_user.username} )" %>
-      <% else  %>
-        <%= "#{User.find(@message.user_id).username}" %>
-      <% end %>
-    </p>
-    <hr width="50%">
-    <table>
-      <tr>
-        <th>Recipients</th>
-        <th>:</th>
-        <td>
-          <% count = 0 %>
-          <% begin %>
-            <%  @recipients.each do |recipient| %>
-              <% count += 1 %>
-              <%= count.to_s + ". " %>
-              <%= recipient.user.email %><br />
-            <% end %>
-          <%rescue%>
-          <%end %>
-        </td>
-      </tr>
-      <tr>
-        <th>Attachment</th>
-        <th>:</th>
-        <td>
-          <% @attachment.each do |attachment| %>
-            <%= link_to attachment.attached_file_file_name, download_attachment_path(attachment), :method => :post %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <th>Subject</th>
-        <th>:</th>
-        <td>
-          <%= @message.subject %>
-        </td>
-      </tr>
-      <tr>
-        <th>Text</th>
-        <th>:</th>
-        <td>
-          <%= @message.text %>
-        </td>
-      </tr>
-    </table>
-    <%-counter = 0%>
-    <%@message.replies.each do |reply|%>
-    <%counter +=1%>
+    <%=form_tag reply_message_reply_path(@message.id) do%>
+      <p style="font-size: 25px;"><b>Message Sender </b> :
+        <% if current_user.id == @message.user_id %>
+          <%= "You ( #{current_user.username} )" %>
+        <% else  %>
+          <%= "#{User.find(@message.user_id).username}" %>
+        <% end %>
+      </p>
       <hr width="50%">
       <table>
-
-        <caption><font size="3px"><u><b>
-      <%=
-          if (11..13).include?(counter.to_i.abs % 100)
-            "#{counter}th"
-          else
-            case counter.to_i.abs % 10
-              when 1; "#{counter}st"
-              when 2; "#{counter}nd"
-              when 3; "#{counter}rd"
-              else    "#{counter}th"
-            end
-          end
-      %> Reply</b></u></font></caption>
         <tr>
-          <td colspan="3"><%= reply.created_at.strftime("%a, %d %b %Y") %> on <%= reply.created_at.strftime("%I:%M %p") %></td>
+          <th>Recipients</th>
+          <th>:</th>
+          <td>
+            <% count = 0 %>
+            <% begin %>
+              <%  @recipients.each do |recipient| %>
+                <% count += 1 %>
+                <%= count.to_s + ". " %>
+                <%= recipient.user.email %><br />
+              <% end %>
+            <%rescue%>
+            <%end %>
+          </td>
         </tr>
         <tr>
-          <td style="text-align: left">Reply From</td>
-          <td>:</td>
-          <td style="text-align: left"><%= reply.user.username %></td>
+          <th>Attachment</th>
+          <th>:</th>
+          <td>
+            <% @attachment.each do |attachment| %>
+              <%= link_to attachment.attached_file_file_name, download_attachment_path(attachment), :method => :post %>
+            <% end %>
+          </td>
         </tr>
         <tr>
-          <td style="text-align: left">Text</td>
-          <td>:</td>
-          <td style="text-align: left"><%=  reply.content %></td>
+          <th>Subject</th>
+          <th>:</th>
+          <td>
+            <%= @message.subject %>
+          </td>
+        </tr>
+        <tr>
+          <th>Text</th>
+          <th>:</th>
+          <td>
+            <%= @message.text %>
+          </td>
         </tr>
       </table>
-    <%end%>
-  <hr width="50%"">
-    <%=form_tag reply_message_reply_path(@message.id) do%>
+      <%-counter = 0%>
+      <%@message.replies.each do |reply|%>
+        <%counter +=1%>
+        <hr width="50%">
+        <br />
+        <table>
+          <caption><font size="3px"><u><b>
+                  <%=
+                  if (11..13).include?(counter.to_i.abs % 100)
+                    "#{counter}th"
+                  else
+                    case counter.to_i.abs % 10
+                    when 1; "#{counter}st"
+                    when 2; "#{counter}nd"
+                    when 3; "#{counter}rd"
+                    else    "#{counter}th"
+                    end
+                  end
+                %> Reply</b></u></font></caption>
+          <tr>
+            <td colspan="3"><%= reply.created_at.strftime("%a, %d %b %Y") %> on <%= reply.created_at.strftime("%I:%M %p") %></td>
+          </tr>
+          <tr>
+            <td style="text-align: left">Reply From</td>
+            <td>:</td>
+            <td style="text-align: left"><%= reply.user.username %></td>
+          </tr>
+          <tr>
+            <td style="text-align: left">Text</td>
+            <td>:</td>
+            <td style="text-align: left"><%=  reply.content %></td>
+          </tr>
+        </table>
+      <%end%>
+        <hr width="50%" /> <br />
       <%=text_area_tag 'content'%>
       <%=submit_tag 'Submit'%>
     <%end%>
   </center>
-  <hr width="50%">
 </div>

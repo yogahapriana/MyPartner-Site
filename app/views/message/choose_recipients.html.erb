@@ -1,45 +1,40 @@
-<div class="message">
-  <hr width="50%"/>
+<div id="choose_recipients">
   <% count = 0  %>
-  <div class="message">
-    <%= form_for @message, :url => create_message_path, :html => { :multipart => true } do |f| %>
-      <center>
-        <table class="table_message">
-          <tr>
-            <th>Recipients</th>
-            <td>:</td>
-            <td>
-              <% @partners.each_with_index do |partner, index| %>
-                <%- unless partner.email.eql?(current_user.email) %>
-                  <% count += 1 %>
-                  <% name = partner.username.to_s + " ( " + partner.email + " )" %>
+  <%= form_for @message, :url => create_message_path, :html => { :multipart => true } do |f| %>
+    <center>
+      <table>
+        <tr>
+          <th>Recipients</th>
+          <td>:</td>
+          <td>
+            <% @partners.each_with_index do |partner, index| %>
+              <%- unless partner.email.eql?(current_user.email) %>
+                <% count += 1 %>
+                <% name = partner.username.to_s + " ( " + partner.email + " )" %>
 
-                  <%= check_box_tag "message[recipients_attributes][#{index}][user_id]", partner.id %> <%= name %>
-                  <br/>
-                <%- end %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th>Attachments</th>
-            <td>:</td>
-            <td> <%= file_field_tag "message[attachments_attributes][1][attached_file]" %>  </td>
-          </tr>
-          <tr>
-            <th>Subject</th>
-            <td>:</td>
-            <td><%= f.text_field "subject" %></td>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-          </tr>
-          <tr>
-            <th>Text</th>
-            <td>:</td>
-            <td><%= f.text_area "text" %></td>
-          </tr>
-        </table>
-      </center>
-      <%= submit_tag "Submit" %>
-    <% end %>
-    <hr width="50%"/>
-  </div>
+                <%= check_box_tag "message[recipients_attributes][#{index}][user_id]", partner.id %> <%= name %>
+                <br/>
+              <%- end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>Attachments</th>
+          <td>:</td>
+          <td> <%= file_field_tag "message[attachments_attributes][1][attached_file]" %>  </td>
+        </tr>
+        <tr>
+          <th>Subject</th>
+          <td>:</td>
+          <td><%= f.text_field "subject" %></td>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+        </tr>
+        <tr>
+          <th>Text</th>
+          <td>:</td>
+          <td><%= f.text_area "text" %></td>
+        </tr>
+      </table>
+    <%= submit_tag "Submit", :class => "button-primary" %>
+  <% end %>
 </div>

@@ -1,43 +1,42 @@
-<div class="message">
-  <hr width="50%" />
-  <center>
-    <table>
-      <tr>
-        <th style="text-align: left">No</th>
-        <th style="text-align: left">Subject</th>
-        <th style="text-align: left">Recipients</th>
-        <th style="text-align: left">Replies</th>
-        <th style="text-align: left">Date</th>
-        <th style="text-align: left">Time</th>
-      </tr>
-      <% count = 0 %>
-      <% @message.each do |message| %>
-        <% @recipient = message.recipients   %>
+<div id="sent_message">
+  <%= form_tag do  %>
+    <center>
+      <table>
         <tr>
-          <td><%= count += 1 %></td>
-          <td><%= link_to "#{message.subject}", "/reply/#{message.id}" %> </td>
-          <td>( <%= @recipient.count %>  person )</td>
-          <td><%= Reply.where(:message_id => message.id).count %></td>
-          <td>
-          <%
+          <th style="text-align: left">No</th>
+          <th style="text-align: left">Subject</th>
+          <th style="text-align: left">Recipients</th>
+          <th style="text-align: left">Replies</th>
+          <th style="text-align: left">Date</th>
+          <th style="text-align: left">Time</th>
+        </tr>
+        <% count = 0 %>
+        <% @message.each do |message| %>
+          <% @recipient = message.recipients   %>
+          <tr>
+            <td><%= count += 1 %></td>
+            <td><%= link_to "#{message.subject}", "/reply/#{message.id}" %> </td>
+            <td>( <%= @recipient.count %>  person )</td>
+            <td><%= Reply.where(:message_id => message.id).count %></td>
+            <td>
+              <%
               days = message.created_at.strftime("%d")
               if (11..13).include?(days.to_i.abs % 100)
                 "#{days}th"
               else
                 case days.to_i.abs % 10
-                  when 1; date = message.created_at.strftime("%a, #{days}st %b %Y")
-                  when 2; date = message.created_at.strftime("%a, #{days}nd %b %Y")
-                  when 3; date = message.created_at.strftime("%a, #{days}rd %b %Y")
-                  else    date = message.created_at.strftime("%a, #{days}th %b %Y")
+                when 1; date = message.created_at.strftime("%a, #{days}st %b %Y")
+                when 2; date = message.created_at.strftime("%a, #{days}nd %b %Y")
+                when 3; date = message.created_at.strftime("%a, #{days}rd %b %Y")
+                else    date = message.created_at.strftime("%a, #{days}th %b %Y")
                 end
               end
-          %>
-          <%= date %>
-          </td>
-          <td><%= message.created_at.strftime("%I:%M %p") %></td>
-        </tr>
-      <% end %>
-    </table>
-  </center>
-  <hr width="50%" />
+            %>
+              <%= date %>
+            </td>
+            <td><%= message.created_at.strftime("%I:%M %p") %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
 </div>

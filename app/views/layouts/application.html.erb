@@ -1,142 +1,57 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE HTML>
+<html lang="en-US" dir="ltr">
   <head>
     <title><%= @title %></title>
-    <!-- ////////////////////////////////// -->
-    <!-- //      Start Stylesheets       // -->
-    <!-- ////////////////////////////////// -->
+    <link rel='stylesheet' id='colors-fresh-css'  href='https://s-ssl.wordpress.com/wp-admin/css/colors-fresh.css?m=1309726244g&#038;ver=20110703' type='text/css' media='all' />
+    <link rel='stylesheet' href='https://s-ssl.wordpress.com/wp-admin/css/wpcom.css?m=1320392177g&#038;version=MU' type='text/css' />
+    <script type='text/javascript' src='https://s-ssl.wordpress.com/wp-includes/js/jquery/jquery.js?ver=1.6.1'></script>
+    <script type='text/javascript' src='https://s-ssl.wordpress.com/wp-content/themes/h4/js/scripts.js?ver=MU'></script>
+    <script type='text/javascript' src='https://s-ssl.wordpress.com/wp-content/themes/h4/tabs/tab.js?ver=20110821'></script>
+    <script type='text/javascript'>
+      /* <![CDATA[ */
+      var wpcom_optimizely = {"customer_support_signup_cta":true};
 
-    <%= stylesheet_link_tag ("inner") %>
-    <%= stylesheet_link_tag ("fancy") %>
-    <%= csrf_meta_tags %>
+      /* ]]> */
+    </script>
+    <script type='text/javascript' src='https://cdn.optimizely.com/js/7144006.js?ver=20111022'></script>
 
-    <!-- ////////////////////////////////// -->
-    <!-- //        Start Scripts         // -->
-    <!-- ////////////////////////////////// -->
-
-    <%= javascript_include_tag :defaults %>
-
-  </head>
-  <body>
-    <div id="centerColumn">
-      <% if user_signed_in? %>
-  <%# if current_user.sign_in_count == 1 %>
-  <%#= "Welcome in your first fisit, " %>
-  <%# else %>
-  <%#= "Welcome back, " %>
-  <%# end %>
-  <%#= current_user.username %>
-  <%#= ". Not you?"  %>
-        <div id="header">
-          <%= link_to image_tag("rss_icon.png"), "#" %>
-        </div>
-        <!--//end #header//-->
-        <div id="InfoPanel2">
-          <div id="InfoPanel_left"><br />
-            <%= @header_name %>
-          </div>
-          <!--//end #InfoPanel_left//-->
-        </div>
-        <!--//end #InfoPanel//-->
-        <div id="navbar">
-          <div id="topnav">
-            <ul>
-              <li><%= link_to "Home", root_path(:keyword => "") %></li>
-              <li class="c1"><%= image_tag("menu_dividers.jpg", :align => 'center') %></li>
-              <li><%= link_to "Inbox", inbox_path %></li>
-              <li class="c1"><%= image_tag("menu_dividers.jpg", :align => 'center') %></li>
-              <li><%= link_to "Sent Message", sent_message_path %></li>
-              <li class="c1"><%= image_tag("menu_dividers.jpg", :align => 'center') %></li>
-              <li><%= link_to "My Groups", my_groups_path %></li>
-              <li class="c1"><%= image_tag("menu_dividers.jpg", :align => 'center') %></li>
-              <li><%= link_to "Group List", group_list_path %></li>
-              <li class="c1"><%= image_tag("menu_dividers.jpg", :align => 'center') %></li>
-              <li><%= link_to "Sign out", destroy_user_session_path %></li>
-            </ul>
-          </div>
-          <!--//end #topnav//-->
-        </div>
-        <!--//end #navbar//-->
-
-        <div id="nav_shadow"></div>
-        <!--//end #nav_shadow//-->
-      <% else %>
-        <div id="header">
-          <%= link_to image_tag("rss_icon.png"), "#" %>
-        </div>
-        <!--//end #header//-->
-        <div id="InfoPanel2">
-          <div id="InfoPanel_left"><br />
-            <%= @header_name %>
-          </div>
-          <!--//end #InfoPanel_left//-->
-        </div>
-        <!--//end #InfoPanel//-->
-        <div id="navbar">
-          <div id="topnav">
-            <ul>
-              <li><%= link_to "Sign in", new_user_session_path, :class => @class_active_sign_in %></li>
-              <li class="c1"><%= image_tag("menu_dividers.jpg", :align => 'center') %></li>
-              <li><%= link_to "Sign up", new_user_registration_path, :class => @class_active_sign_up %></li>
-            </ul>
-          </div>
-          <!--//end #topnav//-->
-        </div>
-        <!--//end #navbar//-->
-
-      <% end %>
+    <script type="text/javascript">
+      var _qevents = _qevents || [];
+      (function() {var elem = document.createElement('script');elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";elem.async = true;elem.type = "text/javascript";var scpt = document.getElementsByTagName('script')[0];scpt.parentNode.insertBefore(elem, scpt);  })();
+      _qevents.push( { qacct:"p-18-mFEk4J448M", labels:"wp.login-page,language.en,type.wpcom" } );
+    </script>
+  <noscript><div style="display: none;"><img src="//pixel.quantserve.com/pixel/p-18-mFEk4J448M.gif?labels=wp.login-page%2Clanguage.en%2Ctype.wpcom" height="1" width="1" alt="" /></div></noscript>
+      <%= stylesheet_link_tag "login" %>
+      <%= stylesheet_link_tag "google-like" %>
+</head>
+<body>
+  <% if user_signed_in? %>
+      <div id="navwrap">
+      <div id="nav" class="floatleft">
+        <%= link_to "Home", root_path(:keyword => "") %>
+        <%= link_to "Inbox", inbox_path %>
+        <%= link_to "Sent Message", sent_message_path %>
+        <%= link_to "My Groups", my_groups_path %>
+        <%= link_to "Group List", group_list_path %>
+        <%= link_to "Sign out", destroy_user_session_path %>
+      </div>
+      <div id="nav" class="floatright">
+        <%= link_to "Hello, #{current_user.username}", root_path %>
+      </div>
+      <div class="clear"></div>
     </div>
-    <!--//end #centerColumn//-->
-    <%= yield %>
-    <% if user_signed_in? %>
-      <div id="footer">
-        <div id="footer_content">
-          <div id="content_left2">
-            <div id="bottomnav">
-              <ul>
-                <li><%= link_to "Home", root_path %> |</li>
-                <li><%= link_to "Inbox", inbox_path %> |</li>
-                <li><%= link_to "Sent Message", sent_message_path %> |</li>
-                <li><%= link_to "My Groups", my_groups_path %> |</li>
-                <li><%= link_to "Group List", group_list_path %> |</li>
-                <li><%= link_to "Sign out", destroy_user_session_path %></li>
-              </ul>
-            </div>
-            <!--//end #bottomnav//-->
-            <br />
-            <br />
-            <div class="copyright">Copyright 2011 Your Company <a href="#">Name</a> | <a href="#">Terms of Use</a></div>
-          </div>
-          <!--//end #content_left2//-->
-          <!--//end #content_right3//-->
-        </div>
-        <!--//end #footer_content//-->
+  <% else %>
+    <div id="navwrap">
+      <div id="nav" class="floatleft">
+        <%= link_to "Sign in", new_user_session_path, :class => @sign_in_class %>
+        <%= link_to "Sign up", new_user_registration_path, :class => @sign_up_class %>
       </div>
-      <!--//end #footer//-->
-      <div class="user_nav"></div>
-    <% else %>
-      <div id="footer">
-        <div id="footer_content">
-          <div id="content_left2">
-            <div id="bottomnav">
-              <ul>
-                <li><%= link_to "Sign in", new_user_session_path, :class => @class_active_sign_in %> |</li>
-                <li><%= link_to "Sign up", new_user_registration_path, :class => @class_active_sign_up %></li>
-              </ul>
-            </div>
-            <!--//end #bottomnav//-->
-            <br />
-            <br />
-            <div class="copyright">Copyright 2011 Your Company <a href="#">Name</a> | <a href="#">Terms of Use</a></div>
-          </div>
-          <!--//end #content_left2//-->
-          <!--//end #content_right3//-->
-        </div>
-        <!--//end #footer_content//-->
+      <div id="nav" class="floatright">
+        <%= link_to "My Partner Site 2011", root_path %>
       </div>
-      <!--//end #footer//-->
-      <div class="user_nav"></div>
-    <% end %>
-  </body>
+      <div class="clear"></div>
+    </div>
+  <% end %>
+  <%= yield %>
+</body>
 </html>

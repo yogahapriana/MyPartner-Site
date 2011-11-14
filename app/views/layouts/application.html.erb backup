@@ -1,51 +1,59 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title> <%= @title %> </title>
-  <%= stylesheet_link_tag    "main" %>
-  <%= javascript_include_tag "jquery" %>
-  <%= javascript_include_tag "jquery.easing" %>
-  <%= javascript_include_tag "jquery.lavalamp" %>
-  <%= javascript_include_tag "js" %>
-  <%= javascript_include_tag "easySlider1.7" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div id="centerColumn">
-      <!-- HEADER -->
-      <div id="header">
-      <!-- LOGO -->
-      <div id="logo">
-      </div><!-- END OF LOGO -->
-      <!-- NAVIGATION BAR-->
-          <div id="nav">
-            <% if user_signed_in? %>
-                  <%# if current_user.sign_in_count == 1 %>
-                    <%#= "Welcome in your first fisit, " %>
-                  <%# else %>
-                    <%#= "Welcome back, " %>
-                  <%# end %>
-                  <%#= current_user.username %>
-                  <%#= ". Not you?"  %>
-                <ul class="lavaLamp" id="menu">
-                  <li class="current"><%= link_to "Home", root_path(:keyword => "") %></li>
-                  <li><%= link_to "Inbox", inbox_path %></li>
-                  <li><%= link_to "Sent Message", sent_message_path %></li>
-                  <li><%= link_to "My Group", my_groups_path %></li>
-                  <li><%= link_to "Group List", group_list_path %></li>
-                  <li><%= link_to "Sign out", destroy_user_session_path %></li>
-                </ul>
-              <% else %>
-                <ul class="lavaLamp" id="menu">
-                  <li class="current"><%= link_to "Sign in", new_user_session_path %></li>
-                  <li><%= link_to "Sign up", new_user_registration_path %></li>
-                </ul>
-              <% end %>
-          </div><!-- END OF NAVIGATION BAR-->
-      </div><!-- END OF HEADER -->
-      <%= yield %>
-   </div>
-  </center>
-</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= @title %></title>
+    <%= stylesheet_link_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div>
+      <% if user_signed_in? %>
+        <% if current_user.sign_in_count == 1 %>
+          <%= "Welcome in your first fisit, " %>
+        <% else %>
+          <%= "Welcome back, " %>
+        <% end %>
+        <%= current_user.username %>
+        <%= ". Not you?"  %>
+        <div id="navbar">
+          <div id="topnav">
+            <ul>
+              <li><%= link_to "Home", root_path(:keyword => "") %></li>
+              <li><%= link_to "Inbox", inbox_path %></li>
+              <li><%= link_to "Sent Message", sent_message_path %></li>
+              <li><%= link_to "My Groups", my_groups_path %></li>
+              <li><%= link_to "Group List", group_list_path %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path %></li>
+            </ul>
+          </div>
+          <!--//end #topnav//-->
+        </div>
+        <!--//end #navbar//-->
+
+        <div id="nav_shadow"></div>
+        <!--//end #nav_shadow//-->
+      <% else %>
+
+        <div id="navwrap">
+          <div id="nav" class="floatleft">
+            <%= link_to "Sign in", new_user_session_path, :class => @class_active_sign_in %>
+            <%= link_to "Sign up", new_user_registration_path, :class => @class_active_sign_up %>
+            <a href="#">Video</a>
+            <a href="#">Maps</a>
+            <a href="#">News</a>
+          </div>
+          <div id="nav" class="floatright">
+            <a href="#">Login</a>
+            <a href="#" ><span class="optionsmenu">&nbsp;</span></a>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+      <% end %>
+    </div>
+    <!--//end #centerColumn//-->
+    <%= yield %>
+  </body>
 </html>
+
 

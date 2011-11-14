@@ -17,6 +17,7 @@ class HomeController < ApplicationController
       @groups = @keyword.blank? ? Group.all : Group.named_like(@keyword).uniq
     end
     @title = ".:: Hello, #{current_user.username} ::."
+    @subtitle = "Searching Groups"
   end
 
   def group_list

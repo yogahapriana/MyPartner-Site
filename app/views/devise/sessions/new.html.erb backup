@@ -1,24 +1,33 @@
-<h2>Sign in</h2>
-<hr width="35%" />
-<% @title = ".:: Sign In ::." %>
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-<table>
-  <tr>
-    <th><%= f.label :email %></th>
-    <td>:</td>
-    <td><%= f.email_field :email, :size => 15 %></td>
-  </tr>
-  <tr>
-    <th><%= f.label :password %></th>
-    <td>:</td>
-    <td><%= f.password_field :password, :size => 15 %></td>
-  </tr>
-</table>
-<hr width="35%" />
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+<!-- This is the container box for the left hand side of the page -->
+<div id="inner_content_left">
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-<%= render :partial => "devise/shared/links" %>
+  <hr width="35%" />
+  <% @header_name = "Sign In." %>
+  <% @title = ".:: Sign In ::." %>
+  <% @sign_in_class = "current" %>
+  <% @sign_up_class = "" %>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => "contactForm")  do |f| %>
+    <center />
+    <table>
+      <tr>
+        <th style="text-align: right"><%= f.label :email %></th>
+        <td></td>
+        <td><%= f.email_field :email, :size => 15 %></td>
+      </tr>
+      <tr>
+        <th style="text-align: right"><%= f.label :password %></th>
+        <td></td>
+        <td><%= f.password_field :password, :size => 15 %></td>
+      </tr>
+    </table>
+    <hr width="35%" />
+    <% if devise_mapping.rememberable? -%>
+      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <% end -%>
+
+    <div><%= f.submit "Sign in" %></div>
+  <% end %>
+  <%= render :partial => "devise/shared/links" %>
+
+</div>
+<!-- End OF INNER_CONTENT_LEFT -->

@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @title = ".:: Showing #{@group} ::."
+    @title = ".:: Showing #{@group.name} ::."
   end
 
   def new

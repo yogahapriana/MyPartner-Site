@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html lang="en-US" dir="ltr">
+  <head>
+    <title><%= @title %></title>
+    <%= stylesheet_link_tag "google-like" %>
+  </head>
+  <body>
+    <div id="navwrap">
+      <div id="nav" class="floatleft">
+        <%= link_to "Sign in", new_user_session_path, :class => @sign_in_class %>
+        <%= link_to "Sign up", new_user_registration_path, :class => @sign_up_class %>
+      </div>
+      <div id="nav" class="floatright">
+        <%= link_to "My Partner Site 2011", root_path %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <%= yield %>
+  </body>
+</html>
+

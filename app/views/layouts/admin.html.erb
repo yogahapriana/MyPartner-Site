@@ -1,30 +1,58 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en-US" dir="ltr">
   <head>
     <title><%= @title %></title>
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <center>
-      <div id="user_nav">
-        <% if user_signed_in? %>
-          <% if current_user.is_admin %>
-            Signed in as <b><%= current_user.username %>(Admin Page)</b>. Not you?
-            <%= link_to "Sign out", destroy_user_session_path %> <br />
-            <%= link_to "Create User", admin_url %> |
-            <%= link_to "Create Group", groups_path %>
-          <% else %>
-            You're not an admin, <strike>fellas!</strike> <%= link_to "Back to Home", root_path %>
-          <% end %>
-        <% else %>
-          <%= link_to "Sign in", new_user_session_path %> or
-          <%= link_to "Sign up", new_user_registration_path %>
-        <% end %>
-      </div>
+    <link rel='stylesheet' id='colors-fresh-css'  href='https://s-ssl.wordpress.com/wp-admin/css/colors-fresh.css?m=1309726244g&#038;ver=20110703' type='text/css' media='all' />
+    <link rel='stylesheet' href='https://s-ssl.wordpress.com/wp-admin/css/wpcom.css?m=1320392177g&#038;version=MU' type='text/css' />
+    <script type='text/javascript' src='https://s-ssl.wordpress.com/wp-includes/js/jquery/jquery.js?ver=1.6.1'></script>
+    <script type='text/javascript' src='https://s-ssl.wordpress.com/wp-content/themes/h4/js/scripts.js?ver=MU'></script>
+    <script type='text/javascript' src='https://s-ssl.wordpress.com/wp-content/themes/h4/tabs/tab.js?ver=20110821'></script>
+    <script type='text/javascript'>
+      /* <![CDATA[ */
+      var wpcom_optimizely = {"customer_support_signup_cta":true};
 
-      <%= yield %>
-    </center>
-  </body>
+      /* ]]> */
+    </script>
+    <script type='text/javascript' src='https://cdn.optimizely.com/js/7144006.js?ver=20111022'></script>
+
+    <script type="text/javascript">
+      var _qevents = _qevents || [];
+      (function() {var elem = document.createElement('script');elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";elem.async = true;elem.type = "text/javascript";var scpt = document.getElementsByTagName('script')[0];scpt.parentNode.insertBefore(elem, scpt);  })();
+      _qevents.push( { qacct:"p-18-mFEk4J448M", labels:"wp.login-page,language.en,type.wpcom" } );
+    </script>
+  <noscript><div style="display: none;"><img src="//pixel.quantserve.com/pixel/p-18-mFEk4J448M.gif?labels=wp.login-page%2Clanguage.en%2Ctype.wpcom" height="1" width="1" alt="" /></div></noscript>
+      <%= stylesheet_link_tag "login" %>
+      <%= stylesheet_link_tag "google-like" %>
+</head>
+<body>
+  <% if user_signed_in? %>
+    <% if current_user.is_admin %>
+      <div id="navwrap">
+        <div id="nav" class="floatleft">
+          <%= link_to "Create User", admin_url %>
+          <%= link_to "Create Group", groups_path %>
+          <%= link_to "Sign out", destroy_user_session_path %>
+        </div>
+        <div id="nav" class="floatright">
+          <%= link_to "Hello, #{current_user.username}", root_path %>
+        </div>
+        <div class="clear"></div>
+      </div>
+    <% else %>
+        You're not an admin, <strike>fellas!</strike> <%= link_to "Back to Home", root_path %>
+    <% end %>
+  <% else %>
+    <div id="navwrap">
+      <div id="nav" class="floatleft">
+        <%= link_to "Sign in", new_user_session_path, :class => @sign_in_class %>
+        <%= link_to "Sign up", new_user_registration_path, :class => @sign_up_class %>
+      </div>
+      <div id="nav" class="floatright">
+        <%= link_to "My Partner Site 2011", root_path %>
+      </div>
+      <div class="clear"></div>
+    </div>
+  <% end %>
+  <%= yield %>
+</body>
 </html>
