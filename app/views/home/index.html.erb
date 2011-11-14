@@ -1,4 +1,5 @@
 <div id="home">
+  <% @home_class = "current" %>
   <center />
   <%= form_tag root_path do %>
     <%= text_field_tag(:keyword, "", :class => "input", :onblur => "if (this.value=='') {this.value='Searching groups...'; }", :onfocus => "if (this.value=='Searching groups...') {this.value=''; }", :value => "Searching groups...") %>

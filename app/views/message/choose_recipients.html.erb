@@ -1,4 +1,5 @@
 <div id="choose_recipients">
+  <% @home_class = "current" %>
   <% count = 0  %>
   <%= form_for @message, :url => create_message_path, :html => { :multipart => true } do |f| %>
     <center>
