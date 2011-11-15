@@ -1,4 +1,27 @@
 <div id="choose_recipients">
+  <!--        Script by hscripts.com          -->
+  <!--        copyright of HIOX INDIA         -->
+  <!-- Free javascripts @ http://www.hscripts.com -->
+  <script type="text/javascript">
+    checked=false;
+    function checkedAll (new_message) {
+      var aa= document.getElementById('new_message');
+      if (checked == false)
+      {
+        checked = true
+      }
+      else
+      {
+        checked = false
+      }
+      for (var i =0; i < aa.elements.length; i++)
+      {
+        aa.elements[i].checked = checked;
+      }
+    }
+  </script>
+  <!-- Script by hscripts.com -->
+
   <% @home_class = "current" %>
   <% count = 0  %>
   <%= form_for @message, :url => create_message_path, :html => { :multipart => true } do |f| %>
@@ -8,6 +31,7 @@
           <th>Recipients</th>
           <td>:</td>
           <td>
+            <input type='checkbox' name='checkall' class="button-primary" onclick='checkedAll(new_message);'> Select All<br /><br />
             <% @partners.each_with_index do |partner, index| %>
               <%- unless partner.email.eql?(current_user.email) %>
                 <% count += 1 %>
@@ -16,7 +40,6 @@
                 <br/>
               <%- end %>
             <% end %> <br />
-            
           </td>
         </tr>
         <tr>
