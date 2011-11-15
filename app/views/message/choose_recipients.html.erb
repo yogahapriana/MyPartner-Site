@@ -12,11 +12,11 @@
               <%- unless partner.email.eql?(current_user.email) %>
                 <% count += 1 %>
                 <% name = partner.username.to_s + " ( " + partner.email + " )" %>
-
                 <%= check_box_tag "message[recipients_attributes][#{index}][user_id]", partner.id %> <%= name %>
                 <br/>
               <%- end %>
-            <% end %>
+            <% end %> <br />
+            
           </td>
         </tr>
         <tr>
@@ -36,6 +36,6 @@
           <td><%= f.text_area "text" %></td>
         </tr>
       </table>
-    <%= submit_tag "Submit", :class => "button-primary" %>
-  <% end %>
+      <%= submit_tag "Submit", :class => "button-primary" %>
+    <% end %>
 </div>

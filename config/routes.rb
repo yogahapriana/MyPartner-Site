@@ -40,12 +40,12 @@ MyPartnerSite3::Application.routes.draw do
   end
   post "create_message/", :to => "message#create_message"
   #  post "create_message/", :to => "message#send_email"
-  get "choose_recipients/:id", :to => "message#choose_recipients"
+  get "choose_recipients/:id", :to => "message#choose_recipients", :as => :choose_recipient
   #  get "choose_recipients/:group_id", :to => "messages#choose_recipients"
   post "send_email/", :to => "message#send_email"
   get "sent_message/", :to => "message#sended_message"
   get "reply/:message_id", :to => "message#reply"
-  post "attachments/:id/download", :to => "message#download_attachment", :as => :download_attachment
+  get "attachments/:id/download", :to => "message#download_attachment", :as => :download_attachment
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

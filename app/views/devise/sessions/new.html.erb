@@ -1,10 +1,11 @@
 <div id="login">
+  <%= @group_id = params["group_id"] %>
   <% @sign_in_class = "current" %>
   <%= form_for :user do |f| %>
     <p>
       <label>
         <%= f.label :email %><br />
-        <%= f.email_field :email, :class => "input" %>
+        <%= f.email_field :email, :class => "input", :value => @group_id %>
       </label>
     </p>
     <p>

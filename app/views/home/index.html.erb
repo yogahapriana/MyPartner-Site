@@ -11,12 +11,18 @@
     <% end %>
   <% else %>
     <%= form_tag do %>
-      <p class="p_home"><%= "Result with keyword #{@keyword} is :" %><br />
-        <% @groups.each do |g| %>
-          <% @group_name = g.name %>
-          <%= link_to "#{@group_name}", "/choose_recipients/#{g.id}" %><br />
+      <% if @keyword!=nil %>
+        <p class="p_home"><%= "Result with keyword \"#{@keyword}\" is :" %><br />
+          <% @groups.each do |g| %>
+            <% @group_name = g.name %>
+            <%= link_to "#{@group_name}", "/choose_recipients/#{g.id}" %><br />
+          <% end %>
+        </p>
+      <% else %>
+        <%= form_tag do %>
+          <p class="p_home"><%= label_tag "No result found" %></p>
         <% end %>
-      </p>
+      <% end %>
     <% end %>
   <% end %>
 </div>

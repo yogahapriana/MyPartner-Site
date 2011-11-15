@@ -8,10 +8,15 @@ class MessageController < ApplicationController
   end
 
   def choose_recipients
-    @group = Group.find(params[:id])
-    @partners = @group.users.uniq
-    @message = Message.new
-    @title = ".:: #{current_user.username} - Choose Recipients ::."
+    if user_signed_in?
+      @group = Group.find(params[:id])
+      @partners = @group.users.uniq
+      @message = Message.new
+      @title = ".:: #{current_user.username} - Choose Recipients ::."
+    else
+      session["group_id"] = params[:id]
+      redirect_to new_user_session_path
+    end
   end
 
   def send_email

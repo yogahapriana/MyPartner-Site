@@ -26,7 +26,7 @@
 </head>
 <body>
   <% if user_signed_in? %>
-      <div id="navwrap">
+    <div id="navwrap">
       <div id="nav" class="floatleft">
         <%= link_to "Home", root_path(:keyword => ""), :class => @home_class %>
         <%= link_to "Inbox", inbox_path, :class => @inbox_class %>
@@ -43,6 +43,7 @@
   <% else %>
     <div id="navwrap">
       <div id="nav" class="floatleft">
+        <%= link_to "Home", root_path(:keyword => ""), :class => @home_class %>
         <%= link_to "Sign in", new_user_session_path, :class => @sign_in_class %>
         <%= link_to "Sign up", new_user_registration_path, :class => @sign_up_class %>
       </div>
