@@ -5,6 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+User.delete_all
+Group.delete_all
+Message.delete_all
+User.delete_all
+Attachment.delete_all
+Conversation.delete_all
+Reply.delete_all
+Recipient.delete_all
+
 user = User.new(
   :email => 'admin_test@test.com',
   :password => '123456',
@@ -34,3 +43,11 @@ user = User.new(
   :password_confirmation => '123456',
   :username =>'user3')
 user.save!
+
+group = Group.new(
+  :name => 'ByeBye Bunny')
+group.save!
+
+group = Group.new(
+  :name => 'Deadly Icarus')
+group.save!
