@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if session["group_id"].nil?
-      "/"
+      root_url
     else
       choose_recipient_path(session["group_id"])
     end

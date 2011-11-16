@@ -37,3 +37,5 @@ MyPartnerSite3::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 end
+
+SITE_URL = "http://localhost:3000"

@@ -4,7 +4,7 @@ class AdminsController < ApplicationController
   
   def index
     @title = ".:: Home - Admin Page ::."
-    @users = User.where("id !=?",current_user.id)
+    @users = User.where("id !=?", current_user.id)
   end
 
   def edit_user
@@ -12,7 +12,7 @@ class AdminsController < ApplicationController
   end
 
   def update_user
-    @user.update_attribute("username",params[:user][:username])
+    @user.update_attribute("username", params[:user][:username])
 
     if @user.save
       redirect_to admin_url, notice: 'User has been updated'

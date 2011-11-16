@@ -13,9 +13,6 @@ class Reply < ActiveRecord::Base
 
   def send_mail_reply_message(user)
     self.message.recipients.each do |recipient|
-      puts "---------------"
-      puts recipient.user.email
-      puts "---------------"
       UserMailer.send_reply_message(recipient.user.email, user, self.message, self).deliver
     end
   end

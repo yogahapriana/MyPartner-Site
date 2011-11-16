@@ -1,8 +1,4 @@
 class HomeController < ApplicationController
-  #  before_filter :authenticate_user!
-  #  before_filter :user_admin?
-  #  before_filter :after_signup?, :only => [:index]
-
   def index
     if user_signed_in?
       if current_user.sign_in_count == 1
@@ -15,12 +11,13 @@ class HomeController < ApplicationController
       @title = ".:: Hello, Guest ::."
     end
     @keyword = params["keyword"]
-    #    @groups = @keyword.blank? ? Group.all : Group.named_like(@keyword).uniq
-    if @keyword==""
+    
+    if @keyword == ""
       @groups = Array.new()
     else
       @groups = @keyword.blank? ? Group.all : Group.named_like(@keyword).uniq
     end
+    
     @subtitle = "Searching Groups"
   end
 
@@ -28,6 +25,7 @@ class HomeController < ApplicationController
     if user_signed_in?
       @title = ".:: #{current_user.username} - Group List ::."
     end
+    
     @header_name = "Group List"
     @title = ".:: Guess - Group List ::."
     @groups = Group.all
@@ -36,6 +34,6 @@ class HomeController < ApplicationController
   def my_groups
     @header_name = current_user.username + " Groups"
     @title = ".:: #{current_user.username} - My Groups ::."
-    @groups = Group.where("users.id=?", current_user.id).includes(:users)
+    @groups = Group.where("users.id = ?", current_user.id).includes(:users)
   end
 end

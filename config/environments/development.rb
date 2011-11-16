@@ -30,7 +30,6 @@ MyPartnerSite3::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
-  puts "aaaaaaaaaaaaaaaa"
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
@@ -40,3 +39,5 @@ MyPartnerSite3::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 end
+
+SITE_URL = "http://localhost:3000"

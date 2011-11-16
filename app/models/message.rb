@@ -1,9 +1,17 @@
 class Message < ActiveRecord::Base
-  has_many :recipients
-  has_many :attachments
-  has_many :replies
-  has_many :message_flags
+
+  with_options :dependent => :destroy do |message|
+    message.has_many :recipients
+    message.has_many :attachments
+    message.has_many :replies
+    message.has_many :message_flags
+  end
+  
   after_create :insert_flags
+
+  accepts_nested_attributes_for :attachments
+  accepts_nested_attributes_for :recipients
+  accepts_nested_attributes_for :replies
 
   scope :my_inbox, lambda {|user_id|
     where(["recipients.user_id = ?", user_id]).includes(:recipients)
@@ -11,17 +19,12 @@ class Message < ActiveRecord::Base
 
   def insert_flags
     self.recipients.each do |recipient|
-#      self.message_flags.create({user_id: recipient.user_id, readed: false})
       MessageFlag.create({message_id: self.id, user_id: recipient.user_id, readed: false})
     end
 
     self.message_flags.create({user_id: self.user_id, readed: true})
   end
   
-  accepts_nested_attributes_for :attachments
-  accepts_nested_attributes_for :recipients
-  accepts_nested_attributes_for :replies
-
   def readed_by(user_id)
     flag = MessageFlag.where("user_id=? AND message_id=?", user_id, self.id).first
     flag.update_attributes({readed: true})
@@ -35,11 +38,7 @@ class Message < ActiveRecord::Base
   def readed?(user_id)
     flag = MessageFlag.where("user_id=? AND message_id=?", user_id, self.id).first
     
-    if flag.readed
-      true
-    else
-      false
-    end
+    flag.readed? ? true : false
   end
 
   def send_mail_message(user)
@@ -47,7 +46,5 @@ class Message < ActiveRecord::Base
       UserMailer.send_message(recipient.user.email, user,self).deliver
     end
   end
-
-
 
 end

@@ -8,9 +8,11 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username
 
-  has_many :messages
-  has_many :recipients
-  has_many :replies
+  with_options :dependent => :destroy do |user|
+    user.has_many :messages
+    user.has_many :recipients
+    user.has_many :replies
+  end
 
   has_and_belongs_to_many :groups
   
@@ -22,5 +24,5 @@ class User < ActiveRecord::Base
       User.create(:username => data["name"], :email => data["email"], :password => Devise.friendly_token[0,20])
     end
   end
-
+  
 end

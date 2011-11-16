@@ -19,11 +19,6 @@ class MessageController < ApplicationController
     end
   end
 
-  def send_email
-    #    @message = Message.new(params[:message])
-    #    redirect_to create_message_path
-  end
-
   def create_message
     @message = Message.new(params[:message])
     if @message.save

@@ -10,12 +10,12 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: development
+  database: partner_site_development
 
 test:
   <<: *defaults
-  database: test
+  database: partner_site_test
 
 production:
   <<: *defaults
-  database: production
+  database: partner_site_production

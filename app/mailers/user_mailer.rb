@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   def send_message(email_address, sender, message)
     @sender = sender
     @message = message
-    @url = "http://electric-robot-8555.heroku.com/reply/#{message.id}"
+    @url = "#{SITE_URL}/reply/#{message.id}"
 
     mail(:to => email_address,
       :subject => "[MyParner-Site] - #{message.subject}")
@@ -14,7 +14,7 @@ class UserMailer < ActionMailer::Base
     @sender = sender
     @message = message
     @reply = reply
-    @url = "http://electric-robot-8555.heroku.com/reply/#{message.id}"
+    @url = "#{SITE_URL}/reply/#{message.id}"
     
     mail(:to => email_address,
       :subject => "[MyParner-Site] - #{message.subject}")

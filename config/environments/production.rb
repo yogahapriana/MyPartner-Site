@@ -59,7 +59,6 @@ MyPartnerSite3::Application.configure do
   config.active_support.deprecation = :notify
   config.action_mailer.default_url_options = { :host => 'electric-robot-8555.heroku.com' }
   config.action_mailer.delivery_method = :smtp
-  puts "aaaaaaaaaaaaaaaa"
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
@@ -69,3 +68,5 @@ MyPartnerSite3::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 end
+
+SITE_URL = "http://electric-robot-8555.heroku.com"

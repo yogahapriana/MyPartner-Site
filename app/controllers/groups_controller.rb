@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
   layout 'layouts/admin'
   before_filter :authenticate_user!
   before_filter :user_admin?
+  before_filter :find_group, except: [:new, :index, :create]
   
   def index
     @groups = Group.all
@@ -9,7 +10,6 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
     @title = ".:: Showing #{@group.name} ::."
   end
 
@@ -20,7 +20,6 @@ class GroupsController < ApplicationController
 
   def edit
     @title = ".:: Editing Group ::."
-    @group = Group.find(params[:id])
   end
 
   def create
@@ -34,8 +33,6 @@ class GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.find(params[:id])
-
     if @group.update_attributes(params[:group])
       redirect_to @group, notice: 'Group was successfully updated.'
     else
@@ -44,16 +41,21 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:id])
     @group.destroy
 
     redirect_to groups_url
   end
 
   def join
-    group = Group.find(params[:id])
-    current_user.groups << group
+    current_user.groups << @group
 
-    redirect_to "/"
+    redirect_to root_url
   end
+
+  private
+
+  def find_group
+    @group = Group.find(params[:id])
+  end
+
 end

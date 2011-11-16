@@ -5,5 +5,4 @@ class Attachment < ActiveRecord::Base
     :path => ':rails_root/tmp/attached_files/:id/:basename.:extension '
   
   belongs_to :messages
-  
 end
