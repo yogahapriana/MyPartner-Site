@@ -18,10 +18,6 @@
             <%= link_to "#{@group_name}", "/choose_recipients/#{g.id}" %><br />
           <% end %>
         </p>
-      <% else %>
-        <%= form_tag do %>
-          <p class="p_home"><%= label_tag "No result found" %></p>
-        <% end %>
       <% end %>
     <% end %>
   <% end %>
