@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     if @keyword == ""
       @groups = Array.new()
     else
-      @groups = @keyword.blank? ? Group.all : Group.named_like(@keyword).uniq
+      @groups = Group.where("name ILIKE ?", "%#{@keyword}%")
     end
     
     @subtitle = "Searching Groups"
