@@ -4,16 +4,24 @@ MyPartnerSite3::Application.routes.draw do
 
   resources :groups
 
-#  resources :partners
+  #  resources :partners
 
   resources :replies do
     member do
       post "reply_message"
     end
+    member do
+      post "reply_message_admin"
+    end
   end
 
 
   match 'admin' => 'admins#index', :as => :admin
+  match 'user' => 'admins#user', :as => :list_user
+  match 'group_list_admin' => 'admins#group_list', :as => :group_list_admin
+  match 'my_groups_admin' => 'admins#my_groups', :as => :my_groups_admin
+  match 'sent_message_admin' => 'admins#sended_message', :as => :sent_message_admin
+  match 'inbox_admin' => 'admins#inbox', :as => :inbox_admin
   match 'edit_user/:id' => 'admins#edit_user', :as => :edit_user
   match 'update_user/:id' => 'admins#update_user', :as => :update_user,:via => :put
   match 'delete_user/:id' => 'admins#delete_user', :as => :delete_user,:via => :delete
@@ -39,12 +47,16 @@ MyPartnerSite3::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
   post "create_message/", :to => "message#create_message"
+  post "create_message_admin/", :to => "admins#create_message"
   #  post "create_message/", :to => "message#send_email"
   get "choose_recipients/:id", :to => "message#choose_recipients", :as => :choose_recipient
+  get "choose_recipients_admin/:id", :to => "admins#choose_recipients", :as => :choose_recipient_admin
+ 
   #  get "choose_recipients/:group_id", :to => "messages#choose_recipients"
   post "send_email/", :to => "message#send_email"
   get "sent_message/", :to => "message#sended_message"
   get "reply/:message_id", :to => "message#reply"
+  get "reply_admin/:message_id", :to => "admins#reply"
   get "attachments/:id/download", :to => "message#download_attachment", :as => :download_attachment
 
   # The priority is based upon order of creation:

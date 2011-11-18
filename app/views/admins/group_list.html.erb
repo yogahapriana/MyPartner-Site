@@ -1,0 +1,20 @@
+<div id="group_list">
+  <% @group_list_class = "current" %>
+  <%= form_tag do %>
+    <center />
+    <table>
+      <tr>
+        <th style="text-align: left">No</th>
+        <th colspan="2" style="text-align: left">Group Name</th>
+      </tr>
+      <% count = 0 %>
+      <%- @groups.each do |group| %>
+        <tr>
+          <td><%= count += 1 %> </td>
+          <td style="text-align: left;"><%= group.name %></td>
+          <td><%= link_to "Join", join_group_path(group), :method => :post %></td>
+        </tr>
+      <%- end %>
+    </table>
+  <% end  %>
+</div>

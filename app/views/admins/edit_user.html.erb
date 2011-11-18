@@ -1,4 +1,5 @@
 <% if current_user.is_admin %>
+<% @create_user_class = "current" %>
   <div id="edit_user">
     <%=  form_tag update_user_path(@user.id),method: :put do %>
       <%= text_field_tag 'user[username]',@user.username, :class => "input" %>

@@ -6,9 +6,7 @@
     <%= submit_tag "Search", :class => "button-primary" %>
   <% end %>
   <% if @groups.count==0 %>
-    <%= form_tag do %>
-      <p class="p_home"><%= label_tag "No result found" %></p>
-    <% end %>
+    <% "" %>
   <% else %>
     <%= form_tag do %>
       <% if @keyword!=nil %>

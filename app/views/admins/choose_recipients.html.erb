@@ -24,26 +24,24 @@
 
   <% @home_class = "current" %>
   <% count = 0  %>
-  <%= form_for @message, :url => create_message_path, :html => { :multipart => true } do |f| %>
+  <%= form_for @message, :url => create_message_admin_path, :html => { :multipart => true } do |f| %>
     <center>
       <table>
-        <% if @partners.count!=0 %>
-          <tr>
-            <th>Recipients</th>
-            <td>:</td>
-            <td>
-              <input type='checkbox' name='checkall' class="button-primary" onclick='checkedAll(new_message);'> Select All<br /><br />
-              <% @partners.each_with_index do |partner, index| %>
-                <%- unless partner.email.eql?(current_user.email) %>
-                  <% count += 1 %>
-                  <% name = partner.username.to_s + " ( " + partner.email + " )" %>
-                  <%= check_box_tag "message[recipients_attributes][#{index}][user_id]", partner.id %> <%= name %>
-                  <br/>
-                <%- end %>
-              <% end %> <br />
-            </td>
-          </tr>
-        <% end %>
+        <tr>
+          <th>Recipients</th>
+          <td>:</td>
+          <td>
+            <input type='checkbox' name='checkall' class="button-primary" onclick='checkedAll(new_message);'> Select All<br /><br />
+            <% @partners.each_with_index do |partner, index| %>
+              <%- unless partner.email.eql?(current_user.email) %>
+                <% count += 1 %>
+                <% name = partner.username.to_s + " ( " + partner.email + " )" %>
+                <%= check_box_tag "message[recipients_attributes][#{index}][user_id]", partner.id %> <%= name %>
+                <br/>
+              <%- end %>
+            <% end %> <br />
+          </td>
+        </tr>
         <tr>
           <th>Attachments</th>
           <td>:</td>

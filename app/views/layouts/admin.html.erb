@@ -29,8 +29,13 @@
     <% if current_user.is_admin %>
       <div id="navwrap">
         <div id="nav" class="floatleft">
-          <%= link_to "Create User", admin_url %>
-          <%= link_to "Create Group", groups_path %>
+          <%= link_to "Home", admin_path(:keyword => ""), :class => @home_class %>
+          <%= link_to "Inbox", inbox_admin_path, :class => @inbox_class %>
+          <%= link_to "Sent Message", sent_message_admin_path , :class => @sent_message_class %>
+          <%= link_to "My Groups", my_groups_admin_path , :class => @my_groups_class %>
+          <%= link_to "Group List", group_list_admin_path, :class => @group_list_class  %>
+          <%= link_to "Create User", list_user_path, :class => @create_user_class %>
+          <%= link_to "Create Group", groups_path, :class => @create_group_class %>
           <%= link_to "Sign out", destroy_user_session_path %>
         </div>
         <div id="nav" class="floatright">
@@ -39,7 +44,7 @@
         <div class="clear"></div>
       </div>
     <% else %>
-        You're not an admin, <strike>fellas!</strike> <%= link_to "Back to Home", root_path %>
+      You're not an admin, <strike>fellas!</strike> <%= link_to "Back to Home", root_path %>
     <% end %>
   <% else %>
     <div id="navwrap">

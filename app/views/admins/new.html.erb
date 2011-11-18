@@ -1,4 +1,5 @@
 <% if current_user.is_admin %>
+<% @create_user_class = "current" %>
   <div id="new_user">
     <%= form_for :user, :url => create_user_path,  do |f| %>
       <center />
