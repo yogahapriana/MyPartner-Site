@@ -9,6 +9,9 @@ class MessageController < ApplicationController
 
   def choose_recipients
     if user_signed_in?
+      if current_user.is_admin
+        redirect_to choose_recipient_admin_path
+      end
       @group = Group.find(params[:id])
       @partners = @group.users.uniq
       @message = Message.new
